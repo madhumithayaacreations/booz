@@ -2,18 +2,18 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import { Box, styled, Avatar } from "@mui/material";
-import { StyledBox,
+import { Avatar } from "@mui/material";
+import {
+  StyledBox,
   StyledContainer,
   StyledButton,
   StyledButton1,
   StyledButton2,
   StyledTextField,
   styles,
- } from "./LoginStyles";
+} from "./LoginStyles";
 import "./register.css";
 import Logo from "../../image/boozLogo.png";
-
 
 export default function Register() {
   const form = useForm({
@@ -97,23 +97,22 @@ export default function Register() {
             <Typography variant="body2" align="center" gutterBottom>
               - - - - - - - - - - or - - - - - - - - -
             </Typography>
-            <Typography variant="body2" align="center" gutterBottom sx={styles.loginDirectly}>
+            <Typography
+              variant="body2"
+              align="center"
+              gutterBottom
+              sx={styles.loginDirectly}
+            >
               Login Directly?
             </Typography>
           </Grid>
           <Grid item xs={12} align="center">
-            <StyledButton1
-              variant="contained"
-              fullWidth
-            >
+            <StyledButton1 variant="contained" fullWidth>
               LOGIN WITH GOOGLE
             </StyledButton1>
           </Grid>
           <Grid item xs={12} align="center">
-            <StyledButton2
-              variant="contained"
-              fullWidth
-            >
+            <StyledButton2 variant="contained" fullWidth>
               LOGIN WITH FACEBOOK
             </StyledButton2>
           </Grid>
@@ -121,4 +120,4 @@ export default function Register() {
       </StyledContainer>
     </StyledBox>
   );
-} 
+}

@@ -9,7 +9,6 @@ import {
   StyledContainer,
   StyledButton,
   StyledButton1,
-  StyledButton2,
   StyledTextField,
   styles,
 } from "./LoginStyles";
