@@ -2,15 +2,12 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import { Box, styled, Avatar, TextField } from "@mui/material";
+import { Avatar } from "@mui/material";
 import {
   StyledBox,
   StyledContainer,
   StyledButton,
-  StyledButton1,
-  StyledButton2,
   StyledTextField,
-  styles,
 } from "./LoginStyles";
 import "./register.css";
 import Logo from "../../image/boozLogo.png";

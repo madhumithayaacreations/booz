@@ -19,9 +19,9 @@ import "./login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
-  // const { register, handleSubmit, formState: { errors } } = useForm();
+
   const loginState = useSelector((state) => state.auth || {});
-  // const { error } = loginState;
+
   const navigate = useNavigate();
 
   const handleForgotPassword = () => {
@@ -122,10 +122,7 @@ const Login = () => {
             </StyledButton>
           </Grid>
           <Grid item xs={12} align="center">
-            <Link
-              to="/forgot-password"
-              style={ styles.forgotPassword }
-            >
+            <Link to="/forgot-password" style={styles.forgotPassword}>
               <Typography
                 variant="body2"
                 align="center"
