@@ -44,6 +44,8 @@ export const StyledButton2 = styled(Button)(({ theme }) => ({
 export const styles = {
   loginDirectly: {
   marginTop: "20px",
+  textDecoration: "none", 
+  color: "black"
   },
   forgotPassword: {
      textDecoration: "none", 

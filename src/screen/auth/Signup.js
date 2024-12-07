@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
 import { Box, styled, Avatar } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { StyledBox,
   StyledContainer,
   StyledButton,
@@ -22,6 +23,12 @@ export default function Register() {
       password: "",
     },
   });
+  const navigate = useNavigate();
+
+  const handlelogin = () => {
+    navigate("/");
+  };
+
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
   const onSubmit = (data) => {
@@ -97,9 +104,20 @@ export default function Register() {
             <Typography variant="body2" align="center" gutterBottom>
               - - - - - - - - - - or - - - - - - - - -
             </Typography>
-            <Typography variant="body2" align="center" gutterBottom sx={styles.loginDirectly}>
+            <Link
+              to="/"
+              style={ styles.loginDirectly }
+            >
+              <Typography
+                variant="body2"
+                align="center"
+                padding="8px"
+                gutterBottom
+                onClick={handlelogin}
+              >
               Login Directly?
             </Typography>
+            </Link>
           </Grid>
           <Grid item xs={12} align="center">
             <StyledButton1
