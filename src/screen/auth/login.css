@@ -1,0 +1,105 @@
+/* Container */
+.login-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    background-color: #f9f9f9e6 !important;
+    overflow: hidden !important;
+    padding: 1rem !important;
+}
+
+/* Logo Section */
+.login-logo {
+    margin-bottom: 1rem !important;
+    text-align: center !important;
+    }
+
+.login-logo img {
+    width: 200px !important;
+    height: 200px !important;
+    margin-bottom: 0 !important; 
+}
+
+
+/* Form Section */
+.login-form-container {
+    width: 100% !important;
+    max-width: 400px !important;
+    background-color: white !important;
+    padding: 2rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.login-title {
+    color: #35373b !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+}
+
+.login-input {
+    background-color: #f8f8f8;
+    border-radius: 50px;
+}
+
+.login-error {
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-button {
+    background-color: #002855 !important;
+    color: #fff !important;
+    padding: 10px !important;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    margin-bottom: 1rem !important;
+    transition: background-color 0.3s !important;
+}
+
+.login-button:hover {
+    background-color: #001d40e2 !important;
+}
+
+.login-forgot {
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #007bff !important;
+    text-align: right !important;
+}
+
+.login-divider {
+    text-align: center !important;
+    margin-top: 2rem !important;
+    color: #6c757d !important;
+}
+
+.login-register {
+    margin-top: 1.5rem !important;
+}
+
+.register-button {
+    background-color: #fff !important;
+    color: #646464 !important;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
+    text-transform: none !important;
+    border-radius: 50px !important;
+    margin-bottom: 1rem !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.register-button:hover{
+    background-color: #dbdada !important;
+}
+
+
+

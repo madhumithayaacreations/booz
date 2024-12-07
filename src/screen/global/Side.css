@@ -1,0 +1,31 @@
+/* scrollbar starts below the header */
+.scrollable-menu {
+    height: calc(100vh - 70px); 
+    overflow-y: auto; 
+    padding-right: 5px;
+  }
+  
+  /* scrollbar appearance */
+  .scrollable-menu .ps__rail-y {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    width: 8px;
+  }
+  
+  .scrollable-menu .ps__thumb-y {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  .scrollable-menu .ps__thumb-y:hover {
+    background-color: #555;
+  }
+  
+  .css-1t8x7v1 >.ps-menu-button {
+    padding-left: 0 !important;
+    width: 100% !important;
+    
+  }
+  .ps-menuitem-root css-pcmu7j css-1t8x7v1{
+    padding-left: 0 !important;
+  }

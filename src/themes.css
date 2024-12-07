@@ -1,0 +1,14 @@
+/* App styles */
+.app {
+  display: flex;
+  height: 100vh; 
+  overflow: hidden; 
+}
+
+.content {
+  flex-grow: 1; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  padding: 16px;
+  box-sizing: border-box;
+}
