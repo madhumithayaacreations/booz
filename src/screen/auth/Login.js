@@ -44,7 +44,7 @@ const Login = () => {
 
   const form = useForm({
     defaultValues: {
-      email: "sample@gmail.com",
+      email: "sampleyaa@gmail.com",
       password: "pass",
     },
   });
@@ -54,7 +54,7 @@ const Login = () => {
   const onSubmit = (data) => {
     // handleLogin(data);
     console.log("form data", data);
-    navigate("/dashboard")
+    navigate("/dashboard");
     form.reset();
   };
 
@@ -123,10 +123,7 @@ const Login = () => {
             </StyledButton>
           </Grid>
           <Grid item xs={12} align="center">
-            <Link
-              to="/forgot-password"
-              style={ styles.forgotPassword }
-            >
+            <Link to="/forgot-password" style={styles.forgotPassword}>
               <Typography
                 variant="body2"
                 align="center"
