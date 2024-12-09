@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-
+import { useNavigate } from "react-router-dom";
 import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -97,6 +97,7 @@ const ProductList = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
+  const navigator=useNavigate();
 
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
@@ -112,7 +113,9 @@ const ProductList = () => {
   const handleFilterClick = (event) => {
     setFilterAnchorEl(event.currentTarget);
   };
-
+const handeladdproduct=()=>{
+  navigator("/products/add")
+}
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
   };
@@ -142,7 +145,7 @@ const ProductList = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -153,6 +156,20 @@ const ProductList = () => {
           <h1>Products</h1>
           <p>Here is your general customers list data</p>
         </Box>
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+          }}
+        >
+            <Button
+            variant="contained"
+            onClick={handeladdproduct}
+            sx={{ backgroundColor: "#0037ff", color: "#fff" }}
+          >
+            Add New
+          </Button>
 
         <Button
           variant="contained"
@@ -164,7 +181,8 @@ const ProductList = () => {
         >
           Filter
         </Button>
-      </Container>
+        </Box>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -231,7 +249,7 @@ const ProductList = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+                
               }}
             >
               {pageNumber}
@@ -249,7 +267,7 @@ const ProductList = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

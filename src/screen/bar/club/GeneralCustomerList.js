@@ -163,7 +163,7 @@ const GeneralCustomers = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -183,7 +183,7 @@ const GeneralCustomers = () => {
         >
           Filter
         </Button>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -250,7 +250,7 @@ const GeneralCustomers = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+              
               }}
             >
               {pageNumber}
@@ -268,7 +268,7 @@ const GeneralCustomers = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

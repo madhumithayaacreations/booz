@@ -2,7 +2,7 @@ import { Container, TextField, Button, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material/styles";
 
-export const StyledContainer = styled(Container)(({ theme }) => ({
+export const StyledContainer = styled("div")(({ theme }) => ({
   backgroundColor: "#fff",
   padding: "30px 40px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

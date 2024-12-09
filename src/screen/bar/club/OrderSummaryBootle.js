@@ -164,7 +164,7 @@ const OrderSummaryBottles = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -185,7 +185,7 @@ const OrderSummaryBottles = () => {
         >
           Today
         </Button>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -252,7 +252,7 @@ const OrderSummaryBottles = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+                
               }}
             >
               {pageNumber}
@@ -270,7 +270,7 @@ const OrderSummaryBottles = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

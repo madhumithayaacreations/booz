@@ -93,7 +93,7 @@ const WholeSalesReports = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -113,7 +113,7 @@ const WholeSalesReports = () => {
         >
           Generate Report
         </Button>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -180,7 +180,7 @@ const WholeSalesReports = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+                
               }}
             >
               {pageNumber}
@@ -198,7 +198,7 @@ const WholeSalesReports = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

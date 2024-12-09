@@ -1,84 +1,110 @@
 import React from "react";
-import { Category as CategoryIcon } from "@mui/icons-material";
-import DashboardIcon from '@mui/icons-material/DashboardOutlined';
-import SpeedIcon from '@mui/icons-material/Speed';
-import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
-import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
-import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
-import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
+import SpeedIcon from "@mui/icons-material/Speed";
+import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
+import CloudSyncOutlinedIcon from "@mui/icons-material/CloudSyncOutlined";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
+
+const APP_LINK = {
+  DASHBOARD: "/dashboard",
+  ADDPRODUCT: "/products/add",
+  EDITPRODUCT: "/products/edit",
+  PRODUCTLIST: "/products/productlist",
+  PERMISSION: "/products/permision",
+  ADDWHOLESALER: "/wholeSalerAggregation/add",
+  EDITWHOLESALER: "/wholeSalerAggregation/edit",
+  ONBOARDEDWHOLESALER: "/wholeSalerAggregation/onboarded",
+  WHOLESALESREPORTS: "/wholeSalerAggregation/wholesalerreport",
+  COMPLETESALESREPORTS: "/wholeSalerAggregation/completesalesreport",
+  ADDMASTERADMIN: "/masterAdminAccess/add",
+  EDITMASTERADMIN: "/masterAdminAccess/edit",
+  ADDBARAGGREGATION: "/barAggregation/add",
+  EDITBARAGGREGATION: "/barAggregation/edit",
+  BARCLUBSALESREPORT: "/barAggregation/barclubsalesreport",
+  BARAGGREGATIONSREPORT: "/barAggregation/salesreport",
+  COMPLETEBARAGGREGATIONREPORT: "/barAggregation/completesalesreport",
+  BARCLUBAGGREGATION: "/barAggregation/aggregation",
+  GENERALCUSTOMERS: "/barAggregation/generalcustomers",
+  CUSTOMERTRANSACTION: "/barAggregation/customertransaction",
+  BOTTLESORDER: "/barAggregation/bootlesorder",
+  SHORTSORDER: "/barAggregation/shortssorder",
+  EDITCUSTOMERORDER: "/customerOrder/edit",
+  GENERALCUSTOMERORDER: "/customerOrder/general",
+  BOTTLESORDERED: "/customerOrder/bottle-order",
+  SHOTSORDERED: "/customerOrder/shots-order",
+};
 
 const menuItems = [
-    {
-      key: "dashboard",
-      icon: <SpeedIcon />,
-      label: "Dashboard",
-      url: "/dashboard"
-    },
-    {
-      key: "products",
-      icon: <PeopleOutlineOutlinedIcon />,
-      label: "Add Products To App",
-      submenu: [
-        { name: "Add New", url: "/products/add" },
-        { name: "Edit", url: "/products/edit" },
-        { name: "Products", url: "/products/productlist" },
-        { name: "Permission", url: "/products/permision" },
-      ]
-    },
-    {
-      key: "wholeSalerAggregation",
-      icon: <CloudSyncOutlinedIcon />,
-      label: "Wholesaler Aggregation",
-      submenu: [
-        { name: "Add New", url: "/wholeSalerAggregation/add" },
-        { name: "Edit", url: "/wholeSalerAggregation/edit" },
-        { name: "OnBoarded Whole Saler", url: "/wholeSalerAggregation/onboarded" },
-        { name: "Wholesaler Reports", url: "/wholeSalerAggregation/wholesalerreport" },
-        { name: "Complete Sales Report", url: "/wholeSalerAggregation/completesalesreport" },
-      ]
-    },
-    {
-        key: "barAggregation",
-        icon: <CloudSyncOutlinedIcon />,
-        label: "Bar Aggregation",
-        submenu: [
-          { name: "Add New", url: "/barAggregation/add" },
-          { name: "Edit", url: "/barAggregation/edit" },
-          { name: "Bar/Club Sales Report", url: "/barAggregation/barclubsalesreport" },
-          { name: "Sales Report", url: "/barAggregation/salesreport" },
-          { name: "Complete Sales Report", url: "/barAggregation/completesalesreport" },
-          { name: "BarClubAggregation", url: "/barAggregation/aggregation" },
-
-          { name: "General Customers", url: "/barAggregation/generalcustomers" },
-          { name: "Customer Transaction", url: "/barAggregation/customertransaction" },
-          { name: "Bottles Order", url: "/barAggregation/bootlesorder" },
-          { name: "Shorts Order", url: "/barAggregation/shortssorder" },
-          
-        ]
-      },
+  {
+    key: "dashboard",
+    icon: <SpeedIcon />,
+    label: "Dashboard",
+    url: APP_LINK.DASHBOARD,
+  },
+  {
+    key: "products",
+    icon: <PeopleOutlineOutlinedIcon />,
+    label: "Add Products To App",
+    submenu: [
+      { name: "Add New", url: APP_LINK.ADDPRODUCT },
+      { name: "Edit", url: APP_LINK.EDITPRODUCT },
+      { name: "Products", url: APP_LINK.PRODUCTLIST },
+      { name: "Permission", url: APP_LINK.PERMISSION },
+    ],
+  },
+  {
+    key: "wholeSalerAggregation",
+    icon: <CloudSyncOutlinedIcon />,
+    label: "Wholesaler Aggregation",
+    submenu: [
+      { name: "Add New", url: APP_LINK.ADDWHOLESALER },
+      { name: "Edit", url: APP_LINK.EDITWHOLESALER },
+      { name: "OnBoarded Whole Saler", url: APP_LINK.ONBOARDEDWHOLESALER },
+      { name: "Wholesaler Reports", url: APP_LINK.WHOLESALESREPORTS },
+      { name: "Complete Sales Report", url: APP_LINK.COMPLETESALESREPORTS },
+    ],
+  },
+  {
+    key: "barAggregation",
+    icon: <CloudSyncOutlinedIcon />,
+    label: "Bar Aggregation",
+    submenu: [
+      { name: "Add New", url: APP_LINK.ADBARAGGREGATION },
+      { name: "Edit", url: APP_LINK.EDITBARAGGREGATION },
+      { name: "Bar/Club Sales Report", url: APP_LINK.BARCLUBSALESREPORT },
+      { name: "Sales Report", url: APP_LINK.BARAGGREGATIONSREPORT },
       {
-        key: "customerOrder",
-        icon: <BorderColorOutlinedIcon />,
-        label: "Customer Order",
-        submenu: [
-          { name: "Edit Customer", url: "/customerOrder/edit" },
-          { name: "General Customers", url: "/customerOrder/general" },
-          { name: "Bottles Ordered", url: "/customerOrder/bottle-order" },
-          { name: "Shots Ordered", url: "/customerOrder/shots-order" },
-
-        ]
+        name: "Complete Sales Report",
+        url: APP_LINK.COMPLETEBARAGGREGATIONREPORT,
       },
-      {
-        key: "masterAdminAccess",
-        icon: <ReceiptLongOutlinedIcon />,
-        label: "Master Admin Access",
-        submenu: [
-          { name: "Add New", url: "/masterAdminAccess/add" },
-          { name: "Edit", url: "/masterAdminAccess/edit" },
-        ]
-      },
-  ];
+      { name: "BarClubAggregation", url: APP_LINK.BARCLUBAGGREGATION },
+      { name: "General Customers", url: APP_LINK.GENERALCUSTOMERS },
+      { name: "Customer Transaction", url: APP_LINK.CUSTOMERTRANSACTION },
+      { name: "Bottles Order", url: APP_LINK.BOTTLESORDER },
+      { name: "Shorts Order", url: APP_LINK.SHORTSORDER },
+    ],
+  },
+  {
+    key: "customerOrder",
+    icon: <BorderColorOutlinedIcon />,
+    label: "Customer Order",
+    submenu: [
+      { name: "Edit Customer", url: APP_LINK.EDITCUSTOMERORDER },
+      { name: "General Customers", url: APP_LINK.GENERALCUSTOMERORDER },
+      { name: "Bottles Ordered", url: APP_LINK.BOTTLESORDERED },
+      { name: "Shots Ordered", url: APP_LINK.SHOTSORDERED },
+    ],
+  },
+  {
+    key: "masterAdminAccess",
+    icon: <ReceiptLongOutlinedIcon />,
+    label: "Master Admin Access",
+    submenu: [
+      { name: "Add New", url: APP_LINK.ADDMASTERADMIN },
+      { name: "Edit", url: APP_LINK.EDITMASTERADMIN },
+    ],
+  },
+];
 
-  export default menuItems;
+export default menuItems;
 

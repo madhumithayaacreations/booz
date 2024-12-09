@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-
+import { useNavigate } from "react-router-dom";
 import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FilterIcons from "@mui/icons-material/FlashOnOutlined";
@@ -22,6 +22,7 @@ import { OnBoardedWholeSales } from "../../constant/data";
 import { StyledContainer, StyledDataGrid } from "../../components/style";
 
 const columns = (handleDeleteRow) => [
+
   {
     field: "wholeSalesReportsImage",
     headerName: "wholeSalesReports Image",
@@ -98,6 +99,7 @@ const BarClubSalesReport = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
+  const navigator=useNavigate();
 
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
@@ -113,7 +115,9 @@ const BarClubSalesReport = () => {
   const handleFilterClick = (event) => {
     setFilterAnchorEl(event.currentTarget);
   };
-
+  const handlenbarclubadd = (event) => {
+    navigator("/barAggregation/add")
+  };
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
   };
@@ -143,7 +147,7 @@ const BarClubSalesReport = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -165,10 +169,10 @@ const BarClubSalesReport = () => {
         <Button
             variant="contained"
             startIcon={<FilterIcons sx={{ color: "white" }} />}
-            onClick={handleFilterClick}
+            onClick={handlenbarclubadd}
             sx={{ backgroundColor: "#b52fec", color: "#fff" }}
           >
-            Generate Report
+            Add new Bar/Club
           </Button>
 
         <Button
@@ -182,7 +186,7 @@ const BarClubSalesReport = () => {
           Filter
         </Button>
         </Box>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -249,7 +253,7 @@ const BarClubSalesReport = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+                
               }}
             >
               {pageNumber}
@@ -267,7 +271,7 @@ const BarClubSalesReport = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+            
             }}
           >
             Next &gt;&gt;

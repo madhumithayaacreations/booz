@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+// import { Provider } from "react-redux";
+// import store from "./redux/store";
 import { createCustomTheme } from "./theme"; 
 import Login from "./screen/auth/Login";
 import Signup from "./screen/auth/Signup";
@@ -42,7 +42,7 @@ const App = () => {
   const isAuthPage = location.pathname === "/" || location.pathname === "/register" || location.pathname === "/forgot-password" ;
   // console.log("Current Path:", location.pathname);
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <ThemeProvider theme={themeSettings}>
         <CssBaseline />
         <div className="app">
@@ -80,7 +80,7 @@ const App = () => {
           </main>
         </div>
       </ThemeProvider>
-    </Provider>
+    // </Provider>
   );
 };
 

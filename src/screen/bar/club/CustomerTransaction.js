@@ -95,7 +95,7 @@ const ViewTransactionReport = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -121,7 +121,7 @@ const ViewTransactionReport = () => {
         >
           Filter
         </Button>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -189,7 +189,7 @@ const ViewTransactionReport = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+               
               }}
             >
               {pageNumber}
@@ -207,7 +207,7 @@ const ViewTransactionReport = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

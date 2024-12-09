@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
-import { Box, styled, Avatar } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { StyledBox,
   StyledContainer,

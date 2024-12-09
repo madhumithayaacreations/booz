@@ -18,6 +18,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { OnBoardedWholeSales } from "../constant/data";
 import { StyledContainer, StyledDataGrid } from "../components/style";
 import FilterIcons from "@mui/icons-material/FlashOnOutlined";
+import { useNavigate } from "react-router-dom";
 
 const columns = (handleDeleteRow) => [
   {
@@ -96,6 +97,7 @@ const OnBoardedWholeSale = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
+  const navigator=useNavigate();
 
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
@@ -112,6 +114,9 @@ const OnBoardedWholeSale = () => {
     setFilterAnchorEl(event.currentTarget);
   };
 
+  const handleaddwholesaler=()=>{
+    navigator("/wholeSalerAggregation/add")
+  }
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
   };
@@ -141,7 +146,7 @@ const OnBoardedWholeSale = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -162,10 +167,10 @@ const OnBoardedWholeSale = () => {
           <Button
             variant="contained"
             startIcon={<FilterIcons sx={{ color: "white" }} />}
-            onClick={handleFilterClick}
+            onClick={handleaddwholesaler}
             sx={{ backgroundColor: "#b52fec", color: "#fff" }}
           >
-            Generate Report
+            Add New Wholesaler
           </Button>
 
           <Button
@@ -179,7 +184,7 @@ const OnBoardedWholeSale = () => {
             Filter
           </Button>
         </Box>
-      </Container>
+      </Box>
 
       <StyledContainer>
         <Menu
@@ -247,7 +252,7 @@ const OnBoardedWholeSale = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+               
               }}
             >
               {pageNumber}
@@ -265,7 +270,7 @@ const OnBoardedWholeSale = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+            
             }}
           >
             Next &gt;&gt;

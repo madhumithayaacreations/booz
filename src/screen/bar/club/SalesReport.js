@@ -10,8 +10,10 @@ import glass from "../../../image/pngwing.com (7) 2.png";
 import Bottles from "../../../image/pngwing.com (13).png";
 import SalesReportGraph from "../../constant/SalesReportGraph";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const SalesReportForm = () => {
+  const navigator=useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,6 +22,8 @@ const SalesReportForm = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
+    navigator("/barAggregation/completesalesreport")
+
   };
 
   return (
@@ -290,7 +294,7 @@ const SalesReportForm = () => {
               sx={{ color: "#101010", padding: "10px 30px" }}
               onClick={handleSubmit(onSubmit)}
             >
-              Download Excel Report
+             Download Excel Report
             </StyledButton1>
           </Box>
           <Box pt={1}>
@@ -300,10 +304,11 @@ const SalesReportForm = () => {
           </Box>
           <Box pt={1}>
             <StyledButton
-              sx={{ padding: "10px 30px" }}
+              sx={{ padding: "10px 75px" }}
               onClick={handleSubmit(onSubmit)}
             >
-              Download Excel Report
+               View Report
+              
             </StyledButton>
           </Box>
         </Grid>

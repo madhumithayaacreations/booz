@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 import FilterIcon from "@mui/icons-material/FlashOnOutlined";
 import { SalesReport } from "../../constant/data";
 import { StyledContainer, StyledDataGrid } from "../../components/style";
@@ -47,7 +47,7 @@ const SalesReports = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
-
+const navigator=useNavigate();
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
     setOpenDialog(true);
@@ -62,6 +62,9 @@ const SalesReports = () => {
   const handleFilterClick = (event) => {
     setFilterAnchorEl(event.currentTarget);
   };
+  const handleReport=()=>{
+    navigator("/barAggregation/completesalesreport")
+  }
 
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
@@ -92,7 +95,7 @@ const SalesReports = () => {
 
   return (
     <>
-      <Container
+      <Box
         style={{
           display: "flex",
           alignItems: "center",
@@ -107,12 +110,12 @@ const SalesReports = () => {
         <Button
           variant="contained"
           startIcon={<FilterIcon sx={{ color: "white" }} />}
-          onClick={handleFilterClick}
+          onClick={handleReport}
           sx={{ backgroundColor: "#b52fec", color: "#fff" }}
         >
           Generate Report
         </Button>
-      </Container>
+      </Box>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -179,7 +182,7 @@ const SalesReports = () => {
                 cursor: "pointer",
                 width: "40px",
                 height: "40px",
-                margin: "0 5px",
+               
               }}
             >
               {pageNumber}
@@ -197,7 +200,7 @@ const SalesReports = () => {
               fontWeight: "bold",
               width: "100px",
               height: "40px",
-              margin: "0 10px",
+             
             }}
           >
             Next &gt;&gt;

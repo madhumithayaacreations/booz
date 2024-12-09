@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginRequest } from "../../redux/auth/AuthAction";
+// import { useDispatch, useSelector } from "react-redux";
+// import { loginRequest } from "../../redux/auth/AuthAction";
 import { Typography, Grid, Avatar } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -18,9 +18,9 @@ import Logo from "../../image/boozLogo.png";
 import "./login.css";
 
 const Login = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const { register, handleSubmit, formState: { errors } } = useForm();
-  const loginState = useSelector((state) => state.auth || {});
+  // const loginState = useSelector((state) => state.auth || {});
   // const { error } = loginState;
   const navigate = useNavigate();
 
@@ -32,28 +32,29 @@ const Login = () => {
     navigate("/register");
   };
 
-  const handleLogin = (data) => {
-    dispatch(loginRequest(data));
-  };
+  // const handleLogin = (data) => {
+  //   dispatch(loginRequest(data));
+  // };
 
-  React.useEffect(() => {
-    if (loginState.user) {
-      navigate("/dashboard");
-    }
-  }, [loginState.user, navigate]);
+  // React.useEffect(() => {
+  //   if (loginState.user) {
+  //     navigate("/dashboard");
+  //   }
+  // }, [loginState.user, navigate]);
 
   const form = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "sample@gmail.com",
+      password: "pass",
     },
   });
 
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
   const onSubmit = (data) => {
-    handleLogin(data);
+    // handleLogin(data);
     console.log("form data", data);
+    navigate("/dashboard")
     form.reset();
   };
 

@@ -1,3 +1,41 @@
 body{
     background-color: #f9f9f9;
 }
+
+.MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-ad8qk9{
+    height: 8px !important;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+.MuiDataGrid-scrollbar {
+    overflow: hidden !important;
+  }
+  .MuiDataGrid-scrollbar:hover {
+    overflow: auto !important;
+  }
+ .MuiDataGrid-scrollbar--vertical {
+    width: 10px !important;
+  }
+  .MuiDataGrid-scrollbar--vertical::-webkit-scrollbar {
+    width: 10px !important;
+}
+  .MuiDataGrid-scrollbar--vertical::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 5px !important;
+  }
+  .MuiDataGrid-scrollbar--vertical::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  .MuiDataGrid-scrollbar--horizontal {
+    height: 10px !important;
+  }
+  .MuiDataGrid-scrollbar--horizontal::-webkit-scrollbar {
+    height: 10px !important;
+  }
+  .MuiDataGrid-scrollbar--horizontal::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 5px !important;
+  }
+  .MuiDataGrid-scrollbar--horizontal::-webkit-scrollbar-track {
+    background: transparent !important;
+  }

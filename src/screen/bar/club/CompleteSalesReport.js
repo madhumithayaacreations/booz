@@ -2,8 +2,12 @@ import { Typography, Grid, Box } from "@mui/material";
 import { StyledButton, StyledTextField } from "../../components/style";
 import "../../../style/style.css";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 const CompleteSalesReportsBarClub = () => {
+  const navigator=useNavigate();
+  const viewReport=()=>{
+    navigator("/barAggregation/salesreport")
+  }
   const {
     register,
     handleSubmit,
@@ -155,7 +159,10 @@ const CompleteSalesReportsBarClub = () => {
               />
             </Box>
             <Box pt={3}>
-              <StyledButton sx={{ padding: "10px 30px" }} type="submit">
+              <StyledButton sx={{ padding: "10px 30px" }} type="submit"
+              onClick={viewReport}
+              >
+                
                 VIEW REPORT
               </StyledButton>
             </Box>
