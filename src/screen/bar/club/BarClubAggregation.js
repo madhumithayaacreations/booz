@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import {
   Box,
-  Container,
   IconButton,
   Menu,
   MenuItem,
@@ -11,22 +9,22 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid,
 } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useNavigate } from "react-router-dom";
 import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FilterIcons from "@mui/icons-material/FlashOnOutlined";
-
 import { OnBoardedWholeSales } from "../../constant/data";
 import { StyledContainer, StyledDataGrid } from "../../components/style";
+import { getColumnWidth } from "../../../style/datagridMQ";
 
 const columns = (handleDeleteRow) => [
-
   {
     field: "wholeSalesReportsImage",
     headerName: "wholeSalesReports Image",
-    width: 150,
+    width: getColumnWidth("wholeSalesReportsImage"),
     renderCell: (params) => (
       <img
         src={params.value}
@@ -35,12 +33,28 @@ const columns = (handleDeleteRow) => [
       />
     ),
   },
-  { field: "licenseProof", headerName: "License Proof", width: 100 },
-  { field: "wholeSalesName", headerName: "WholeSales Name", width: 150 },
-  { field: "Address", headerName: "Address", width: 230 },
-  { field: "emailId", headerName: "Email", width: 150 },
-  { field: "phoneNo", headerName: "Phone No", width: 150 },
-  { field: "officeTimings", headerName: "Office Timings", width: 100 },
+  {
+    field: "licenseProof",
+    headerName: "License Proof",
+    width: getColumnWidth("licenseProof"),
+  },
+  {
+    field: "wholeSalesName",
+    headerName: "WholeSales Name",
+    width: getColumnWidth("wholeSalesName"),
+  },
+  { field: "Address", headerName: "Address", width: getColumnWidth("Address") },
+  { field: "emailId", headerName: "Email", width: getColumnWidth("emailId") },
+  {
+    field: "phoneNo",
+    headerName: "Phone No",
+    width: getColumnWidth("phoneNo"),
+  },
+  {
+    field: "officeTimings",
+    headerName: "Office Timings",
+    width: getColumnWidth("officeTimings"),
+  },
 
   {
     field: "actions",
@@ -99,7 +113,7 @@ const BarClubSalesReport = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
-  const navigator=useNavigate();
+  const navigator = useNavigate();
 
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
@@ -115,8 +129,8 @@ const BarClubSalesReport = () => {
   const handleFilterClick = (event) => {
     setFilterAnchorEl(event.currentTarget);
   };
-  const handlenbarclubadd = (event) => {
-    navigator("/barAggregation/add")
+  const handleBarClubAdd = (event) => {
+    navigator("/barAggregation/add");
   };
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
@@ -147,46 +161,50 @@ const BarClubSalesReport = () => {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box>
-          <h1>Bar/Club Aggregation</h1>
-          <p>Completed App Product List Data</p>
-        </Box>
-        <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-
-        <Button
-            variant="contained"
-            startIcon={<FilterIcons sx={{ color: "white" }} />}
-            onClick={handlenbarclubadd}
-            sx={{ backgroundColor: "#b52fec", color: "#fff" }}
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Box>
+            <h1>Bar/Club Aggregation</h1>
+            <p>Completed App Product List Data</p>
+          </Box>
+        </Grid>
+        <Grid item xs={0} sm={0} md={4} lg={4} xl={5}></Grid>
+        <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
-            Add new Bar/Club
-          </Button>
+            <Button
+              variant="contained"
+              startIcon={<FilterIcons sx={{ color: "white" }} />}
+              onClick={handleBarClubAdd}
+              sx={{
+                backgroundColor: "#b52fec",
+                color: "#fff",
+              }}
+            >
+              Add new Bar/Club
+            </Button>
 
-        <Button
-          variant="contained"
-          startIcon={<FilterIcon color="blue" />}
-          endIcon={<ExpandMoreIcon />}
-          onClick={handleFilterClick}
-          backgroundColor={"#f4f5f9"}
-          color="#dde0e4"
-        >
-          Filter
-        </Button>
-        </Box>
-      </Box>
+            <Button
+              variant="contained"
+              startIcon={<FilterIcon color="blue" />}
+              endIcon={<ExpandMoreIcon />}
+              onClick={handleFilterClick}
+              backgroundColor={"#f4f5f9"}
+              color="#dde0e4"
+              sx={{
+                marginLeft: "10px",
+              }}
+            >
+              Filter
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -221,9 +239,8 @@ const BarClubSalesReport = () => {
         )}
         <Box
           className="button-box"
-          padding={3}
+          padding={{ xs: 1, sm: 3 }}
           display="flex"
-          gap={1}
           justifyContent="end"
         >
           <Button
@@ -232,33 +249,45 @@ const BarClubSalesReport = () => {
               backgroundColor: "#2f4cdd",
               color: "white",
               fontWeight: "bold",
-              width: "130px",
+              width: { xs: "130px", sm: "130px" },
               height: "40px",
               margin: "0 10px",
             }}
           >
             &lt;&lt; Previous
           </Button>
-          {Array.from(
-            { length: Math.ceil(rows.length / rowsPerPage) },
-            (_, i) => i + 1
-          ).map((pageNumber) => (
-            <Button
-              key={pageNumber}
-              onClick={() => setCurrentPage(pageNumber)}
-              style={{
-                backgroundColor: currentPage === pageNumber ? "#fff" : "#ccc",
-                border: "none",
-                padding: "8px 16px",
-                cursor: "pointer",
-                width: "40px",
-                height: "40px",
-                
-              }}
-            >
-              {pageNumber}
-            </Button>
-          ))}
+          <Box bgcolor={"#e3e4eb"}>
+            {Array.from(
+              { length: Math.ceil(rows.length / rowsPerPage) },
+              (_, i) => i + 1
+            ).map((pageNumber) => (
+              <Button
+                key={pageNumber}
+                onClick={() => setCurrentPage(pageNumber)}
+                sx={{
+                  borderRadius: "5px",
+                  width: { xs: "5px", sm: "10px" },
+                  height: "30px",
+                  backgroundColor:
+                    currentPage === pageNumber ? "#fff" : "#e3e4eb",
+                  border: "none",
+                  color: currentPage === pageNumber ? "#000" : "#b6bee8",
+                  cursor: "pointer",
+                  margin: { xs: "2px 2px", sm: "5px 5px" },
+                  minWidth: "34px",
+                  display: {
+                    xs: "none",
+                    sm: "none",
+                    md: "inline",
+                    lg: "inline",
+                    xl: "inline",
+                  },
+                }}
+              >
+                {pageNumber}
+              </Button>
+            ))}
+          </Box>
           <Button
             onClick={() =>
               setCurrentPage((prev) =>
@@ -269,9 +298,9 @@ const BarClubSalesReport = () => {
               backgroundColor: "#2f4cdd",
               color: "white",
               fontWeight: "bold",
-              width: "100px",
+              width: { xs: "130px", sm: "100px" },
               height: "40px",
-            
+              margin: "0 10px",
             }}
           >
             Next &gt;&gt;

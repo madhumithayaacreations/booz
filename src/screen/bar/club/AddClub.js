@@ -4,13 +4,10 @@ import {
   Box,
   Button,
   Typography,
-  TextField,
-  Card,
   Grid,
   Snackbar,
   Alert,
   Container,
-  styled,
 } from "@mui/material";
 import {
   StyledContainer,
@@ -83,7 +80,7 @@ const EditClub = () => {
             >
               Add New with Bar/Club
             </Typography>
-            <Typography variant="p" gutterBottom sx={ styles.photoHeading }>
+            <Typography variant="p" gutterBottom sx={styles.photoHeading}>
               Add Minimum 2 Images Bar/Club
             </Typography>
           </Box>
@@ -139,9 +136,9 @@ const EditClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
-          <Typography variant="p" gutterBottom sx={ styles.photoHeading }>
-            Upload Minimum 2 Govt ID Proof Of Bar/club 
-          </Typography>
+            <Typography variant="p" gutterBottom sx={styles.photoHeading}>
+              Upload Minimum 2 Govt ID Proof Of Bar/club
+            </Typography>
             <StyledContainer>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={2} xl={2}>
@@ -280,7 +277,7 @@ const EditClub = () => {
           <Box sx={{ mt: 4, mb: 3 }}>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit
