@@ -1,6 +1,7 @@
 import { Container, TextField, Button, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material/styles";
+import { SkipPrevious } from "@mui/icons-material";
 
 export const StyledContainer = styled("div")(({ theme }) => ({
   backgroundColor: "#fff",
@@ -18,7 +19,7 @@ export const StyledContainer = styled("div")(({ theme }) => ({
 
 export const StyledDataGrid = styled(DataGrid)({
   border: "none",
-overflowx:"auto",
+  overflowx: "auto",
 
   "& .MuiDataGrid-columnHeaders": {
     background: "#fff",
@@ -158,3 +159,40 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
     },
   },
 }));
+export const paginationStyles = {
+  PreviousButton: {
+    backgroundColor: "#2f4cdd",
+    color: "white",
+    fontWeight: "bold",
+    width: { xs: "100px", sm: "130px" },
+    height: "40px",
+    margin: "0 10px",
+    "&:hover": {
+      backgroundColor: "#2f4cdd",
+    },
+  },
+  arrayButtons: {
+    borderRadius: "5px",
+    width: { xs: "5px", sm: "10px" },
+    height: "30px",
+    border: "none",
+    cursor: "pointer",
+    margin: { xs: "2px 2px", sm: "5px 5px" },
+    minWidth: "34px",
+    display: {
+      xs: "none",
+      sm: "none",
+      md: "inline",
+      lg: "inline",
+      xl: "inline",
+    },
+  },
+  nextButton: {
+    backgroundColor: "#2f4cdd",
+    color: "white",
+    fontWeight: "bold",
+    width: { xs: "100px", sm: "100px" },
+    height: "40px",
+    margin: "0 10px",
+  },
+};

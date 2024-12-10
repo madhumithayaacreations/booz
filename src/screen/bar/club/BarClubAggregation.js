@@ -17,7 +17,11 @@ import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FilterIcons from "@mui/icons-material/FlashOnOutlined";
 import { OnBoardedWholeSales } from "../../constant/data";
-import { StyledContainer, StyledDataGrid } from "../../components/style";
+import {
+  StyledContainer,
+  StyledDataGrid,
+  paginationStyles,
+} from "../../components/style";
 import { getColumnWidth } from "../../../style/datagridMQ";
 
 const columns = (handleDeleteRow) => [
@@ -168,13 +172,14 @@ const BarClubSalesReport = () => {
             <p>Completed App Product List Data</p>
           </Box>
         </Grid>
-        <Grid item xs={0} sm={0} md={4} lg={4} xl={5}></Grid>
+        <Grid item xs={1} sm={1} md={4} lg={4} xl={5}></Grid>
         <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
           <Box
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              marginTop: "20px",
             }}
           >
             <Button
@@ -194,9 +199,9 @@ const BarClubSalesReport = () => {
               startIcon={<FilterIcon color="blue" />}
               endIcon={<ExpandMoreIcon />}
               onClick={handleFilterClick}
-              backgroundColor={"#f4f5f9"}
               color="#dde0e4"
               sx={{
+                backgroundColor: "#f4f5f9",
                 marginLeft: "10px",
               }}
             >
@@ -222,7 +227,7 @@ const BarClubSalesReport = () => {
           rows={paginatedRows}
           columns={columns(handleDeleteRow)}
           pageSize={rowsPerPage}
-          pagination={false}
+          pagination={true}
           onSelectionModelChange={(newSelection) => {
             setSelection(newSelection);
           }}
@@ -245,18 +250,11 @@ const BarClubSalesReport = () => {
         >
           <Button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: { xs: "130px", sm: "130px" },
-              height: "40px",
-              margin: "0 10px",
-            }}
+            sx={paginationStyles.PreviousButton}
           >
             &lt;&lt; Previous
           </Button>
-          <Box bgcolor={"#e3e4eb"}>
+          <Box sx={{ backgroundColor: "#e3e4eb" }}>
             {Array.from(
               { length: Math.ceil(rows.length / rowsPerPage) },
               (_, i) => i + 1
@@ -265,23 +263,10 @@ const BarClubSalesReport = () => {
                 key={pageNumber}
                 onClick={() => setCurrentPage(pageNumber)}
                 sx={{
-                  borderRadius: "5px",
-                  width: { xs: "5px", sm: "10px" },
-                  height: "30px",
                   backgroundColor:
                     currentPage === pageNumber ? "#fff" : "#e3e4eb",
-                  border: "none",
                   color: currentPage === pageNumber ? "#000" : "#b6bee8",
-                  cursor: "pointer",
-                  margin: { xs: "2px 2px", sm: "5px 5px" },
-                  minWidth: "34px",
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "inline",
-                    lg: "inline",
-                    xl: "inline",
-                  },
+                  ...paginationStyles.arrayButtons,
                 }}
               >
                 {pageNumber}
@@ -295,12 +280,7 @@ const BarClubSalesReport = () => {
               )
             }
             sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: { xs: "130px", sm: "100px" },
-              height: "40px",
-              margin: "0 10px",
+              ...paginationStyles.nextButton,
             }}
           >
             Next &gt;&gt;

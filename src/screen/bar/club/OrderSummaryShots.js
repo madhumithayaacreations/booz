@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import {
   Box,
-  Container,
+  Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -15,18 +15,39 @@ import {
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CalendarMonthIcon from "@mui/icons-material/CalendarToday";
 import { orderSummery } from "../../constant/data";
-import { StyledContainer, StyledDataGrid } from "../../components/style";
+import {
+  StyledContainer,
+  StyledDataGrid,
+  paginationStyles,
+} from "../../components/style";
+import { getColumnWidth } from "../../../style/datagridMQ";
 
 const columns = (handleDeleteRow) => [
-  { field: "OrderID", headerName: "Order ID", width: 150 },
-  { field: "OrderDate", headerName: "Order Date", width: 180 },
-  { field: "CustomerName", headerName: "Customer Name", width: 150 },
-  { field: "Location", headerName: "Location", width: 300 },
-  { field: "Amount", headerName: "Amount", width: 100 },
+  {
+    field: "OrderID",
+    headerName: "Order ID",
+    width: getColumnWidth("OrderID"),
+  },
+  {
+    field: "OrderDate",
+    headerName: "Order Date",
+    width: getColumnWidth("OrderDate"),
+  },
+  {
+    field: "CustomerName",
+    headerName: "Customer Name",
+    width: getColumnWidth("CustomerName1"),
+  },
+  {
+    field: "Location",
+    headerName: "Location",
+    width: getColumnWidth("Location"),
+  },
+  { field: "Amount", headerName: "Amount", width: getColumnWidth("Amount") },
   {
     field: "ViewTransactionReport",
     headerName: "View Transaction Report",
-    width: 100,
+    width: getColumnWidth("ViewTransactionReport"),
     renderCell: (params) => (
       <div
         onClick={() => alert(`Viewing details for ${params.row.CustomerName}`)}
@@ -43,7 +64,7 @@ const columns = (handleDeleteRow) => [
   {
     field: "actions",
     headerName: "Actions",
-    width: 100,
+    width: getColumnWidth("actions3"),
     renderCell: (params) => (
       <ActionMenu user={params.row} onDelete={handleDeleteRow} />
     ),
@@ -164,28 +185,29 @@ const OrderSummaryShots = () => {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box>
-          <h1>Order Summary(Shots Ordered)</h1>
-          <p>Here is your Order List Data</p>
-        </Box>
-
-        <Button
-          variant="contained"
-          startIcon={<CalendarMonthIcon sx={{ color: "blue" }} />}
-          onClick={handleFilterClick}
-          backgroundColor={"#f4f5f9"}
-          color="#dde0e4"
-        >
-          Today
-        </Button>
-      </Box>
+      <Grid container spacing={2} padding={1}>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Box>
+            <h1>Order Summary(Shots Ordered)</h1>
+            <p>Here is your Order List Data</p>
+          </Box>
+        </Grid>
+        <Grid item xs={1} sm={1} md={4} lg={4} xl={5}></Grid>
+        <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
+          <Button
+            variant="contained"
+            startIcon={<CalendarMonthIcon sx={{ color: "blue" }} />}
+            onClick={handleFilterClick}
+            sx={{
+              backgroundColor: "#f4f5f9",
+              color: "#999ea5",
+              marginTop: "20px",
+            }}
+          >
+            Today
+          </Button>
+        </Grid>
+      </Grid>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -220,44 +242,35 @@ const OrderSummaryShots = () => {
         )}
         <Box
           className="button-box"
-          padding={3}
+          padding={{ xs: 1, sm: 3 }}
           display="flex"
-          gap={1}
           justifyContent="end"
         >
           <Button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "130px",
-              height: "40px",
-              margin: "0 10px",
-            }}
+            sx={paginationStyles.PreviousButton}
           >
             &lt;&lt; Previous
           </Button>
-          {Array.from(
-            { length: Math.ceil(rows.length / rowsPerPage) },
-            (_, i) => i + 1
-          ).map((pageNumber) => (
-            <Button
-              key={pageNumber}
-              onClick={() => setCurrentPage(pageNumber)}
-              style={{
-                backgroundColor: currentPage === pageNumber ? "#fff" : "#ccc",
-                border: "none",
-                padding: "8px 16px",
-                cursor: "pointer",
-                width: "40px",
-                height: "40px",
-               
-              }}
-            >
-              {pageNumber}
-            </Button>
-          ))}
+          <Box sx={{ backgroundColor: "#e3e4eb" }}>
+            {Array.from(
+              { length: Math.ceil(rows.length / rowsPerPage) },
+              (_, i) => i + 1
+            ).map((pageNumber) => (
+              <Button
+                key={pageNumber}
+                onClick={() => setCurrentPage(pageNumber)}
+                sx={{
+                  backgroundColor:
+                    currentPage === pageNumber ? "#fff" : "#e3e4eb",
+                  color: currentPage === pageNumber ? "#000" : "#b6bee8",
+                  ...paginationStyles.arrayButtons,
+                }}
+              >
+                {pageNumber}
+              </Button>
+            ))}
+          </Box>
           <Button
             onClick={() =>
               setCurrentPage((prev) =>
@@ -265,12 +278,7 @@ const OrderSummaryShots = () => {
               )
             }
             sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "100px",
-              height: "40px",
-             
+              ...paginationStyles.nextButton,
             }}
           >
             Next &gt;&gt;

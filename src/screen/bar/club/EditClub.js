@@ -4,13 +4,10 @@ import {
   Box,
   Button,
   Typography,
-  TextField,
-  Card,
   Grid,
   Snackbar,
   Alert,
   Container,
-  styled,
 } from "@mui/material";
 import {
   StyledContainer,
@@ -155,7 +152,7 @@ const EditClub = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
                   <Typography variant="p" gutterBottom>
-                     Upload Minimum 2 Govt ID Proof Of Bar/club 
+                    Upload Minimum 2 Govt ID Proof Of Bar/club
                   </Typography>
                   <Box sx={styles.fileButtonContainer}>
                     <Button
@@ -193,11 +190,7 @@ const EditClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Name
             </Typography>
             <StyledTextField
@@ -212,11 +205,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Address
             </Typography>
             <StyledTextField
@@ -233,11 +222,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Goole Map URL
             </Typography>
             <StyledTextField
@@ -246,17 +231,15 @@ const EditClub = () => {
               size="large"
               fullWidth
               multiline
-              {...register("googleMap", { required: "Google Map URL is required" })}
+              {...register("googleMap", {
+                required: "Google Map URL is required",
+              })}
               error={!!errors.googleMap}
               helperText={errors.googleMap ? errors.googleMap.message : ""}
             />
           </Box>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Latitude
             </Typography>
             <StyledTextField
@@ -273,11 +256,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Longitude
             </Typography>
             <StyledTextField
@@ -294,11 +273,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
               Working Time
             </Typography>
             <StyledTextField
@@ -317,7 +292,7 @@ const EditClub = () => {
           <Box sx={{ mt: 4, mb: 3 }}>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit

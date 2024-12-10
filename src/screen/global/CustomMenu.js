@@ -2,7 +2,9 @@ import React from "react";
 import { MenuItem } from "react-pro-sidebar";
 import { styled } from "@mui/material";
 
-const CustomMenuItem = styled(MenuItem)(({ theme, isCollapsed, isActive }) => ({
+const CustomMenuItem = styled(MenuItem, {
+  shouldForwardProp: (prop) => prop !== "isCollapsed" && prop !== "isActive",
+})(({ theme, isCollapsed, isActive }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: isCollapsed ? "center" : "flex-start",

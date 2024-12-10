@@ -102,7 +102,7 @@ export const styles = {
   },
   photoHeading: {
     color: "grey",
-    marginLeft: "5px"
+    marginLeft: "5px",
   },
   fileButtonContainer: {
     display: "flex",

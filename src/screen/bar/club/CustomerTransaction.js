@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Container,
   Menu,
   MenuItem,
   Button,
@@ -9,23 +8,39 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid,
 } from "@mui/material";
-
 import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
 import { ViewTransactionDetails } from "../../constant/data";
-import { StyledContainer, StyledDataGrid } from "../../components/style";
+import {
+  StyledContainer,
+  StyledDataGrid,
+  paginationStyles,
+} from "../../components/style";
+import { getColumnWidth } from "../../../style/datagridMQ";
 
 const columns = (handleDeleteRow) => [
-  { field: "Date", headerName: "Date", width: 150 },
-  { field: "ShotsCostumed", headerName: "Shots Costumed", width: 180 },
-  { field: "BottlesBoUght", headerName: "Bottles BoUght", width: 150 },
-  { field: "BarVisited", headerName: "BarVisited", width: 300 },
+  { field: "Date", headerName: "Date", width: getColumnWidth("Date") },
+  {
+    field: "ShotsCostumed",
+    headerName: "Shots Costumed",
+    width: getColumnWidth("ShotsCostumed"),
+  },
+  {
+    field: "BottlesBoUght",
+    headerName: "Bottles BoUght",
+    width: getColumnWidth("BottlesBoUght"),
+  },
+  {
+    field: "BarVisited",
+    headerName: "BarVisited",
+    width: getColumnWidth("BarVisited"),
+  },
   {
     field: "DownloadInvoice",
     headerName: "DownloadInvoice",
-    width: 100,
+    width: getColumnWidth("DownloadInvoice"),
     renderCell: (params) => (
       <div
         onClick={() => alert(`Viewing details for ${params.row.CustomerName}`)}
@@ -39,7 +54,11 @@ const columns = (handleDeleteRow) => [
       </div>
     ),
   },
-  { field: "lastOrder", headerName: "lastOrder", width: 150 },
+  {
+    field: "lastOrder",
+    headerName: "lastOrder",
+    width: getColumnWidth("lastOrder"),
+  },
 ];
 
 const ViewTransactionReport = () => {
@@ -95,33 +114,35 @@ const ViewTransactionReport = () => {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box mb={2}>
-          <h1>View Transaction Report for Every Customer</h1>
-          <span>
-            Email:{" "}
-            <b style={{ textDecoration: "underline" }}>sharma123@gmail.com</b>,
-            Customer Name: <b style={{ textDecoration: "underline" }}>Sharma</b>
-          </span>
-        </Box>
-
-        <Button
-          variant="contained"
-          startIcon={<FilterIcon color="blue" />}
-          endIcon={<ExpandMoreIcon />}
-          onClick={handleFilterClick}
-          backgroundColor={"#f4f5f9"}
-          color="#dde0e4"
-        >
-          Filter
-        </Button>
-      </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Box mb={2}>
+            <h1>View Transaction Report for Every Customer</h1>
+            <span>
+              Email:{" "}
+              <b style={{ textDecoration: "underline" }}>sharma123@gmail.com</b>
+              , Customer Name:{" "}
+              <b style={{ textDecoration: "underline" }}>Sharma</b>
+            </span>
+          </Box>
+        </Grid>
+        <Grid item xs={1} sm={1} md={4} lg={4} xl={5}></Grid>
+        <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
+          <Button
+            variant="contained"
+            startIcon={<FilterIcon color="blue" />}
+            endIcon={<ExpandMoreIcon />}
+            onClick={handleFilterClick}
+            sx={{
+              backgroundColor: "#f4f5f9",
+              color: "#999ea5",
+              marginTop: "20px",
+            }}
+          >
+            Filter
+          </Button>
+        </Grid>
+      </Grid>
       <StyledContainer>
         <Menu
           anchorEl={filterAnchorEl}
@@ -139,7 +160,7 @@ const ViewTransactionReport = () => {
           rows={paginatedRows}
           columns={columns(handleDeleteRow)}
           pageSize={rowsPerPage}
-          pagination={false}
+          pagination={true}
           onSelectionModelChange={(newSelection) => {
             setSelection(newSelection);
           }}
@@ -156,45 +177,35 @@ const ViewTransactionReport = () => {
         )}
         <Box
           className="button-box"
-          padding={3}
+          padding={{ xs: 1, sm: 3 }}
           display="flex"
-          gap={1}
           justifyContent="end"
         >
           <Button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "130px",
-              height: "40px",
-              margin: "0 10px",
-            }}
+            sx={paginationStyles.PreviousButton}
           >
             &lt;&lt; Previous
           </Button>
-          {Array.from(
-            { length: Math.ceil(rows.length / rowsPerPage) },
-            (_, i) => i + 1
-          ).map((pageNumber) => (
-            <Button
-              key={pageNumber}
-              onClick={() => setCurrentPage(pageNumber)}
-              style={{
-                backgroundColor: currentPage === pageNumber ? "#fff" : "#ccc",
-                color: currentPage === pageNumber ? "#000" : "#000",
-                border: "none",
-                padding: "8px 16px",
-                cursor: "pointer",
-                width: "40px",
-                height: "40px",
-               
-              }}
-            >
-              {pageNumber}
-            </Button>
-          ))}
+          <Box sx={{ backgroundColor: "#e3e4eb" }}>
+            {Array.from(
+              { length: Math.ceil(rows.length / rowsPerPage) },
+              (_, i) => i + 1
+            ).map((pageNumber) => (
+              <Button
+                key={pageNumber}
+                onClick={() => setCurrentPage(pageNumber)}
+                sx={{
+                  backgroundColor:
+                    currentPage === pageNumber ? "#fff" : "#e3e4eb",
+                  color: currentPage === pageNumber ? "#000" : "#b6bee8",
+                  ...paginationStyles.arrayButtons,
+                }}
+              >
+                {pageNumber}
+              </Button>
+            ))}
+          </Box>
           <Button
             onClick={() =>
               setCurrentPage((prev) =>
@@ -202,12 +213,7 @@ const ViewTransactionReport = () => {
               )
             }
             sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "100px",
-              height: "40px",
-             
+              ...paginationStyles.nextButton,
             }}
           >
             Next &gt;&gt;

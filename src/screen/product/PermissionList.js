@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  Box,
-  Typography,
-  Paper,
-  Button,
-} from "@mui/material";
+import { Grid, Box, Typography, Paper, Button } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 
@@ -32,11 +26,9 @@ const AccessControlGrid = () => {
   const [adminView, setAdminView] = React.useState("tick");
   const [adminEdit, setAdminEdit] = React.useState("tick");
   const [adminDelete, setAdminDelete] = React.useState("tick");
-
   const [wholesalerView, setWholesalerView] = React.useState("tick");
   const [wholesalerEdit, setWholesalerEdit] = React.useState("tick");
   const [wholesalerDelete, setWholesalerDelete] = React.useState("tick");
-
   const [clubView, setClubView] = React.useState("tick");
   const [clubEdit, setClubEdit] = React.useState("tick");
   const [clubDelete, setClubDelete] = React.useState("cross");
@@ -44,12 +36,15 @@ const AccessControlGrid = () => {
   return (
     <Box sx={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <Grid container spacing={2}>
-
         <Grid item xs={7}>
           <Box>
             <Typography
               variant="h5"
-              sx={{ textAlign: "center", fontWeight: "bold", marginBottom: "20px" }}
+              sx={{
+                textAlign: "center",
+                fontWeight: "bold",
+                marginBottom: "20px",
+              }}
             >
               Access Control Panel
             </Typography>
@@ -81,18 +76,31 @@ const AccessControlGrid = () => {
           <Box>
             <Paper
               elevation={3}
-              sx={{ padding: "15px", marginBottom: "10px", backgroundColor: "#2f4cdd", color: "#fff", borderRadius: "20px" }}
+              sx={{
+                padding: "15px",
+                marginBottom: "10px",
+                backgroundColor: "#2f4cdd",
+                color: "#fff",
+                borderRadius: "20px",
+              }}
             >
               <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                 Admin Access
               </Typography>
               <Typography variant="body2">
-                Admins have all (view, edit & delete) access for Wholesaler & Club.
+                Admins have all (view, edit & delete) access for Wholesaler &
+                Club.
               </Typography>
             </Paper>
             <Paper
               elevation={3}
-              sx={{ padding: "15px", marginBottom: "10px", backgroundColor: "#2f4cdd", color: "#fff", borderRadius: "20px" }}
+              sx={{
+                padding: "15px",
+                marginBottom: "10px",
+                backgroundColor: "#2f4cdd",
+                color: "#fff",
+                borderRadius: "20px",
+              }}
             >
               <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                 Wholesaler Access
@@ -103,7 +111,13 @@ const AccessControlGrid = () => {
             </Paper>
             <Paper
               elevation={3}
-              sx={{ padding: "15px", marginBottom: "10px", backgroundColor: "#2f4cdd", color: "#fff", borderRadius: "20px" }}
+              sx={{
+                padding: "15px",
+                marginBottom: "10px",
+                backgroundColor: "#2f4cdd",
+                color: "#fff",
+                borderRadius: "20px",
+              }}
             >
               <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                 Club Access

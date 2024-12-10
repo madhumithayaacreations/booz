@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-
 import {
   Box,
-  Container,
+  Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -16,15 +15,20 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FilterIcon from "@mui/icons-material/Tune";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { OnBoardedWholeSales } from "../constant/data";
-import { StyledContainer, StyledDataGrid } from "../components/style";
+import {
+  StyledContainer,
+  StyledDataGrid,
+  paginationStyles,
+} from "../components/style";
 import FilterIcons from "@mui/icons-material/FlashOnOutlined";
 import { useNavigate } from "react-router-dom";
+import { getColumnWidth } from "../../style/datagridMQ";
 
 const columns = (handleDeleteRow) => [
   {
     field: "wholeSalesReportsImage",
     headerName: "wholeSalesReports Image",
-    width: 150,
+    width: getColumnWidth("wholeSalesReportsImage1"),
     renderCell: (params) => (
       <img
         src={params.value}
@@ -33,17 +37,37 @@ const columns = (handleDeleteRow) => [
       />
     ),
   },
-  { field: "licenseProof", headerName: "License Proof", width: 100 },
-  { field: "wholeSalesName", headerName: "WholeSales Name", width: 150 },
-  { field: "Address", headerName: "Address", width: 230 },
-  { field: "emailId", headerName: "Email", width: 150 },
-  { field: "phoneNo", headerName: "Phone No", width: 150 },
-  { field: "officeTimings", headerName: "Office Timings", width: 100 },
+  {
+    field: "licenseProof",
+    headerName: "License Proof",
+    width: getColumnWidth("licenseProof1"),
+  },
+  {
+    field: "wholeSalesName",
+    headerName: "WholeSales Name",
+    width: getColumnWidth("wholeSalesName1"),
+  },
+  {
+    field: "Address",
+    headerName: "Address",
+    width: getColumnWidth("Address1"),
+  },
+  { field: "emailId", headerName: "Email", width: getColumnWidth("emailId1") },
+  {
+    field: "phoneNo",
+    headerName: "Phone No",
+    width: getColumnWidth("phoneNo1"),
+  },
+  {
+    field: "officeTimings",
+    headerName: "Office Timings",
+    width: getColumnWidth("officeTimings1"),
+  },
 
   {
     field: "actions",
     headerName: "Actions",
-    width: 100,
+    width: getColumnWidth("actions5"),
     renderCell: (params) => (
       <ActionMenu user={params.row} onDelete={handleDeleteRow} />
     ),
@@ -97,7 +121,7 @@ const OnBoardedWholeSale = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
-  const navigator=useNavigate();
+  const navigator = useNavigate();
 
   const handleDeleteRow = (id) => {
     setUserToDelete(id);
@@ -114,9 +138,9 @@ const OnBoardedWholeSale = () => {
     setFilterAnchorEl(event.currentTarget);
   };
 
-  const handleaddwholesaler=()=>{
-    navigator("/wholeSalerAggregation/add")
-  }
+  const handleaddwholesaler = () => {
+    navigator("/wholeSalerAggregation/add");
+  };
   const handleFilterClose = () => {
     setFilterAnchorEl(null);
   };
@@ -146,45 +170,45 @@ const OnBoardedWholeSale = () => {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box>
-          <h1>On-Boarded WholeSaler</h1>
-          <p>Completed List of On Boarded WholeSaler</p>
-        </Box>
-        <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-          <Button
-            variant="contained"
-            startIcon={<FilterIcons sx={{ color: "white" }} />}
-            onClick={handleaddwholesaler}
-            sx={{ backgroundColor: "#b52fec", color: "#fff" }}
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Box>
+            <h1>On-Boarded WholeSaler</h1>
+            <p>Completed List of On Boarded WholeSaler</p>
+          </Box>
+        </Grid>
+        <Grid item xs={1} sm={1} md={4} lg={4} xl={5}></Grid>
+        <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+              marginTop: "20px",
+            }}
           >
-            Add New Wholesaler
-          </Button>
+            <Button
+              variant="contained"
+              startIcon={<FilterIcons sx={{ color: "white" }} />}
+              onClick={handleaddwholesaler}
+              sx={{ backgroundColor: "#b52fec", color: "#fff" }}
+            >
+              Add New Wholesaler
+            </Button>
 
-          <Button
-            variant="contained"
-            startIcon={<FilterIcon color="blue" />}
-            endIcon={<ExpandMoreIcon />}
-            onClick={handleFilterClick}
-            backgroundColor={"#f4f5f9"}
-            color="#dde0e4"
-          >
-            Filter
-          </Button>
-        </Box>
-      </Box>
+            <Button
+              variant="contained"
+              startIcon={<FilterIcon color="blue" />}
+              endIcon={<ExpandMoreIcon />}
+              onClick={handleFilterClick}
+              backgroundColor={"#f4f5f9"}
+              color="#dde0e4"
+            >
+              Filter
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
 
       <StyledContainer>
         <Menu
@@ -220,44 +244,35 @@ const OnBoardedWholeSale = () => {
         )}
         <Box
           className="button-box"
-          padding={3}
+          padding={{ xs: 1, sm: 3 }}
           display="flex"
-          gap={1}
           justifyContent="end"
         >
           <Button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "130px",
-              height: "40px",
-              margin: "0 10px",
-            }}
+            sx={paginationStyles.PreviousButton}
           >
             &lt;&lt; Previous
           </Button>
-          {Array.from(
-            { length: Math.ceil(rows.length / rowsPerPage) },
-            (_, i) => i + 1
-          ).map((pageNumber) => (
-            <Button
-              key={pageNumber}
-              onClick={() => setCurrentPage(pageNumber)}
-              style={{
-                backgroundColor: currentPage === pageNumber ? "#fff" : "#ccc",
-                border: "none",
-                padding: "8px 16px",
-                cursor: "pointer",
-                width: "40px",
-                height: "40px",
-               
-              }}
-            >
-              {pageNumber}
-            </Button>
-          ))}
+          <Box sx={{ backgroundColor: "#e3e4eb" }}>
+            {Array.from(
+              { length: Math.ceil(rows.length / rowsPerPage) },
+              (_, i) => i + 1
+            ).map((pageNumber) => (
+              <Button
+                key={pageNumber}
+                onClick={() => setCurrentPage(pageNumber)}
+                sx={{
+                  backgroundColor:
+                    currentPage === pageNumber ? "#fff" : "#e3e4eb",
+                  color: currentPage === pageNumber ? "#000" : "#b6bee8",
+                  ...paginationStyles.arrayButtons,
+                }}
+              >
+                {pageNumber}
+              </Button>
+            ))}
+          </Box>
           <Button
             onClick={() =>
               setCurrentPage((prev) =>
@@ -265,12 +280,7 @@ const OnBoardedWholeSale = () => {
               )
             }
             sx={{
-              backgroundColor: "#2f4cdd",
-              color: "white",
-              fontWeight: "bold",
-              width: "100px",
-              height: "40px",
-            
+              ...paginationStyles.nextButton,
             }}
           >
             Next &gt;&gt;

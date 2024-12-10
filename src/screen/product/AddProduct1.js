@@ -4,15 +4,12 @@ import {
   Button,
   Typography,
   TextField,
-  Card,
   Grid,
   Snackbar,
   Alert,
-  Container
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import {
-  cardStyles,
   typographyTitleStyles,
   uploadOuterBoxStyles,
   uploadBoxStyles,
@@ -70,24 +67,25 @@ const AddProductPage = () => {
 
       <Grid container spacing={4}>
         {/* Image Upload Section */}
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <Box sx={uploadOuterBoxStyles}>
             <Box sx={{ display: "flex", alignItems: "left" }}>
               <Box
                 sx={uploadBoxStyles}
                 onClick={() => document.getElementById("upload-image").click()}
               >
-                <Typography
-                  variant="body2"
-                >
-                  Upload Image
-                </Typography>
+                <Typography variant="body2">Upload Image</Typography>
               </Box>
 
               <Box sx={{ marginLeft: "10px" }}>
                 <Typography
                   variant="caption"
-                  sx={{ color: "#a0a0a0", textAlign: "right", display: "block", marginBottom: "20px" }}
+                  sx={{
+                    color: "#a0a0a0",
+                    textAlign: "right",
+                    display: "block",
+                    marginBottom: "20px",
+                  }}
                 >
                   Please upload a square image, size less than 200KB
                 </Typography>
@@ -96,7 +94,9 @@ const AddProductPage = () => {
                   component="span"
                   variant="outlined"
                   sx={chooseFileButtonStyles}
-                  onClick={() => document.getElementById("upload-image").click()}
+                  onClick={() =>
+                    document.getElementById("upload-image").click()
+                  }
                 >
                   Choose File
                 </Button>
@@ -157,7 +157,9 @@ const AddProductPage = () => {
                   variant="outlined"
                   {...field}
                   error={!!errors.bottleName}
-                  helperText={errors.bottleName ? "Bottle Name is required" : ""}
+                  helperText={
+                    errors.bottleName ? "Bottle Name is required" : ""
+                  }
                   sx={textFieldStyles}
                 />
               )}
@@ -172,7 +174,9 @@ const AddProductPage = () => {
                   variant="outlined"
                   {...field}
                   error={!!errors.typeOfQuantity}
-                  helperText={errors.typeOfQuantity ? "Type of Quantity is required" : ""}
+                  helperText={
+                    errors.typeOfQuantity ? "Type of Quantity is required" : ""
+                  }
                   sx={textFieldStyles}
                 />
               )}
