@@ -70,15 +70,11 @@ const SideBar = () => {
               const isParentActive =
                 selected === menuItem.url ||
                 (menuItem.submenu &&
-                  menuItem.submenu.some((submenu) => submenu.url === selected)); 
-
+                  menuItem.submenu.some((submenu) => submenu.url === selected));
               return (
                 <React.Fragment key={menuItem.key}>
                   {/* Top-Level Menu Item */}
-                  <Link
-                    to={menuItem.url || "#"}
-                    style={ classes.menuLinkStyle }
-                  >
+                  <Link to={menuItem.url || "#"} style={classes.menuLinkStyle}>
                     <CustomMenuItem
                       icon={menuItem.icon}
                       isCollapsed={isCollapsed}
@@ -104,7 +100,7 @@ const SideBar = () => {
                           <Link
                             to={submenuItem.url}
                             key={`${menuItem.key}-${idx}`}
-                            style={ classes.menuLinkStyle }
+                            style={classes.menuLinkStyle}
                           >
                             <CustomMenuItem
                               icon={submenuItem.icon}

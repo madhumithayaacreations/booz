@@ -191,7 +191,7 @@ const EditClub = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
                   <Typography variant="p" gutterBottom>
-                     Upload Minimum 2 Govt ID Proof Of Bar/club 
+                    Upload Minimum 2 Govt ID Proof Of Bar/club
                   </Typography>
                   <Box sx={styles.fileButtonContainer}>
                     <Button
@@ -229,11 +229,15 @@ const EditClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Name
             </Typography>
             <StyledTextField
@@ -248,11 +252,15 @@ const EditClub = () => {
             />
           </Box>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Address
             </Typography>
             <StyledTextField
@@ -268,11 +276,15 @@ const EditClub = () => {
             />
           </Box>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Goole Map URL
             </Typography>
             <StyledTextField
@@ -281,17 +293,23 @@ const EditClub = () => {
               size="large"
               fullWidth
               multiline
-              {...register("googleMap", { required: "Google Map URL is required" })}
+              {...register("googleMap", {
+                required: "Google Map URL is required",
+              })}
               error={!!errors.googleMap}
               helperText={errors.googleMap ? errors.googleMap.message : ""}
             />
           </Box>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Latitude
             </Typography>
             <StyledTextField
@@ -308,11 +326,15 @@ const EditClub = () => {
             />
           </Box>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Longitude
             </Typography>
             <StyledTextField
@@ -329,11 +351,15 @@ const EditClub = () => {
             />
           </Box>
           <Box>
+<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
+=======
+            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Working Time
             </Typography>
             <StyledTextField
@@ -352,7 +378,7 @@ const EditClub = () => {
           <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit

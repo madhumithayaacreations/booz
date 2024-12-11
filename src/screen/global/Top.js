@@ -11,7 +11,11 @@ import {
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+<<<<<<< HEAD
 import { topbarStyles } from "../components/TopStyles"; 
+=======
+import { topbarStyles } from "./TopStyles";
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
 
 const Topbar = () => {
   const theme = useTheme();
@@ -20,9 +24,12 @@ const Topbar = () => {
     <Box p={2}>
       <Grid container justifyContent="space-between" alignItems="center">
         {/* SEARCH BAR */}
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={4} mb={2}>
           <Box sx={topbarStyles.searchBar}>
-            <InputBase sx={topbarStyles.searchInput} placeholder="Search here" />
+            <InputBase
+              sx={topbarStyles.searchInput}
+              placeholder="Search here"
+            />
             <IconButton type="button" sx={topbarStyles.searchButton}>
               <SearchIcon />
             </IconButton>
@@ -31,7 +38,12 @@ const Topbar = () => {
 
         {/* ICONS AND PROFILE */}
         <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Box display="flex" justifyContent="flex-end" alignItems="center" gap={2}>
+          <Box
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="center"
+            gap={2}
+          >
             {/* Notifications Icon */}
             <Badge badgeContent={3} color="secondary" overlap="rectangular">
               <IconButton sx={topbarStyles.notificationButton}>

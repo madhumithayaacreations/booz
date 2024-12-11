@@ -33,7 +33,7 @@ export default function SalesReportGraph() {
       <div
         style={{
           height: "300px",
-          width: "600px", // Adjust the graph width as needed
+          width: "300px", // Adjust the graph width as needed
           minWidth: "100%",
         }}
       >

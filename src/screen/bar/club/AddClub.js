@@ -117,7 +117,7 @@ const AddClub = () => {
             >
               Add New with Bar/Club
             </Typography>
-            <Typography variant="p" gutterBottom sx={ styles.photoHeading }>
+            <Typography variant="p" gutterBottom sx={styles.photoHeading}>
               Add Minimum 2 Images Bar/Club
             </Typography>
           </Box>
@@ -173,9 +173,9 @@ const AddClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
-          <Typography variant="p" gutterBottom sx={ styles.photoHeading }>
-            Upload Minimum 2 Govt ID Proof Of Bar/club 
-          </Typography>
+            <Typography variant="p" gutterBottom sx={styles.photoHeading}>
+              Upload Minimum 2 Govt ID Proof Of Bar/club
+            </Typography>
             <StyledContainer>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={2} xl={2}>
@@ -314,7 +314,7 @@ const AddClub = () => {
           <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit

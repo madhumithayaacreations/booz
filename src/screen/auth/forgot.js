@@ -8,8 +8,13 @@ import {
   StyledContainer,
   StyledButton,
   StyledTextField,
+<<<<<<< HEAD
 } from "../components/LoginStyles";
 import "../../style/register.css";
+=======
+} from "./LoginStyles";
+import "./register.css";
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
 import Logo from "../../image/boozLogo.png";
 
 export default function ForgotPassword() {
