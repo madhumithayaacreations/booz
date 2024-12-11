@@ -152,3 +152,50 @@ export const styles = {
     textTransform: "none",
   },
 };
+
+export const graphStyle = {
+  graphStyle: {
+    height: "auto",
+    width: "100%",
+    maxWidth: "100%",
+    overflowX: "auto",
+    overflowY: "Scroll",
+  },
+  SalesReportStyle: {
+    height: "250px",
+    width: "100%",
+    minWidth: "100%",
+    overflowY: "hidden",
+  },
+  yScale: {
+    type: "linear",
+    reverse: false,
+  },
+  axisBottom: {
+    orient: "bottom",
+    tickSize: 5,
+    tickPadding: 5,
+    tickRotation: 0,
+    legendOffset: 36,
+    legendPosition: "middle",
+  },
+  axisLeft: {
+    orient: "left",
+    tickSize: 0,
+    tickPadding: 5,
+    tickRotation: 0,
+    legendOffset: -40,
+    legendPosition: "middle",
+    format: (value) => `${value / 1000}k`,
+    tickValues: [200000, 400000, 600000, 800000],
+  },
+  graphButton: {
+    color: "#101010",
+    padding: "5px 20px",
+    margin: "5px",
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "blue",
+    },
+  },
+};

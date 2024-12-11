@@ -1,40 +1,19 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { linearGradientDef } from "@nivo/core";
+import { graphStyle } from "../bar/club/SalesStyles";
 
-const data = [
-  {
-    id: "Series 1",
-    data: [
-      { x: "Jan", y: 300000 },
-      { x: "Feb", y: 400000 },
-      { x: "Mar", y: 600000 },
-      { x: "Apr", y: 500000 },
-      { x: "May", y: 700000 },
-      { x: "Jun", y: 400000 },
-      { x: "Jul", y: 600000 },
-      { x: "Aug", y: 500000 },
-      { x: "Sep", y: 700000 },
-    ],
-  },
-];
-
-export default function SalesReportGraph() {
+export default function SalesReportGraph({ data }) {
+  console.log("Received data in SalesReportGraph:", data);
   return (
     <div
       style={{
-        height: "auto",
-        width: "100%",
-        maxWidth: "100%",
-        overflowX: "auto",
-        overflowY: "Scroll",
+        ...graphStyle.graphStyle,
       }}
     >
       <div
         style={{
-          height: "250px",
-          width: "300px", // Adjust the graph width as needed
-          minWidth: "100%",
+          ...graphStyle.SalesReportStyle,
         }}
       >
         <ResponsiveLine
@@ -42,31 +21,15 @@ export default function SalesReportGraph() {
           margin={{ top: 20, right: 20, bottom: 50, left: 50 }}
           xScale={{ type: "point" }}
           yScale={{
-            type: "linear",
-            min: 0,
-            max: 1200000,
-            stacked: false,
-            reverse: false,
+            ...graphStyle.yScale,
           }}
           axisTop={null}
           axisRight={null}
           axisBottom={{
-            orient: "bottom",
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legendOffset: 36,
-            legendPosition: "middle",
+            ...graphStyle.axisBottom,
           }}
           axisLeft={{
-            orient: "left",
-            tickSize: 0,
-            tickPadding: 5,
-            tickRotation: 0,
-            legendOffset: -40,
-            legendPosition: "middle",
-            format: (value) => `${value / 1000}k`,
-            tickValues: [200000, 400000, 600000, 800000],
+            ...graphStyle.axisLeft,
           }}
           enablePoints={true}
           pointSize={10}

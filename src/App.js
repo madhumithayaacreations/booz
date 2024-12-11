@@ -33,6 +33,7 @@ import OrderSummaryShotsOrder from "./screen/bar/club/OrderSummaryShots";
 import EditCustomer from "./screen/Customer/EditCustomer";
 import { APP_LINK } from "./screen/global/MenuItems";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import DummyData from "../src/screen/constant/FormInput";
 import "./themes.css";
 
 const App = () => {
@@ -53,30 +54,75 @@ const App = () => {
         <main className="content">
           {!isAuthPage && <TopBar />}
           <Routes>
-            <Route path={APP_LINK.LOGIN} element={<Login />} />
+            <Route path={APP_LINK.LOGIN} element={<DummyData />} />
             <Route path={APP_LINK.REGISTER} element={<Signup />} />
-            <Route path={APP_LINK.FORGOTPASSWORD} element={<ForgotPassword />} />
+            <Route
+              path={APP_LINK.FORGOTPASSWORD}
+              element={<ForgotPassword />}
+            />
             <Route path={APP_LINK.DASHBOARD} element={<Dashboard />} />
             <Route path={APP_LINK.ADDPRODUCT} element={<AddProduct />} />
             <Route path={APP_LINK.EDITPRODUCT} element={<EditProduct />} />
             <Route path={APP_LINK.PRODUCTLIST} element={<ProductList />} />
             <Route path={APP_LINK.PERMISSION} element={<Permission />} />
-            <Route path={APP_LINK.ADDWHOLESALER} element={<AddWholeSalerAggregation />} />
-            <Route path={APP_LINK.EDITWHOLESALER} element={<EditWholeSalerAggregation />} />
-            <Route path={APP_LINK.ONBOARDEDWHOLESALER} element={<OnBoardedWholeSaler />} />
-            <Route path={APP_LINK.WHOLESALESREPORTS} element={<WholeSalerReport />} />
-            <Route path={APP_LINK.COMPLETESALESREPORTS} element={<CompleteWholeSalerReport />} />
+            <Route
+              path={APP_LINK.ADDWHOLESALER}
+              element={<AddWholeSalerAggregation />}
+            />
+            <Route
+              path={APP_LINK.EDITWHOLESALER}
+              element={<EditWholeSalerAggregation />}
+            />
+            <Route
+              path={APP_LINK.ONBOARDEDWHOLESALER}
+              element={<OnBoardedWholeSaler />}
+            />
+            <Route
+              path={APP_LINK.WHOLESALESREPORTS}
+              element={<WholeSalerReport />}
+            />
+            <Route
+              path={APP_LINK.COMPLETESALESREPORTS}
+              element={<CompleteWholeSalerReport />}
+            />
             <Route path={APP_LINK.ADDBARAGGREGATION} element={<AddClub />} />
             <Route path={APP_LINK.EDITBARAGGREGATION} element={<EditClub />} />
-            <Route path={APP_LINK.BARCLUBAGGREGATION} element={<BarClubAggregation />} />
-            <Route path={APP_LINK.BARCLUBSALESREPORT} element={<BarClubSalesReport />} />
-            <Route path={APP_LINK.BARAGGREGATIONSREPORT} element={<SalesReport />} />
-            <Route path={APP_LINK.COMPLETEBARAGGREGATIONREPORT} element={<CompleteSalesReport />} />
-            <Route path={APP_LINK.GENERALCUSTOMERS} element={<GeneralCustomer />} />
-            <Route path={APP_LINK.CUSTOMERTRANSACTION} element={<CustomerTransaction />} />
-            <Route path={APP_LINK.BOTTLESORDER} element={<OrderSummaryBottleOrder />} />
-            <Route path={APP_LINK.SHORTSORDER} element={<OrderSummaryShotsOrder />} />
-            <Route path={APP_LINK.EDITCUSTOMERORDER} element={<EditCustomer />} />
+            <Route
+              path={APP_LINK.BARCLUBAGGREGATION}
+              element={<BarClubAggregation />}
+            />
+            <Route
+              path={APP_LINK.BARCLUBSALESREPORT}
+              element={<BarClubSalesReport />}
+            />
+            <Route
+              path={APP_LINK.BARAGGREGATIONSREPORT}
+              element={<SalesReport />}
+            />
+            <Route
+              path={APP_LINK.COMPLETEBARAGGREGATIONREPORT}
+              element={<CompleteSalesReport />}
+            />
+            <Route
+              path={APP_LINK.GENERALCUSTOMERS}
+              element={<GeneralCustomer />}
+            />
+            <Route
+              path={APP_LINK.CUSTOMERTRANSACTION}
+              element={<CustomerTransaction />}
+            />
+            <Route
+              path={APP_LINK.BOTTLESORDER}
+              element={<OrderSummaryBottleOrder />}
+            />
+            <Route
+              path={APP_LINK.SHORTSORDER}
+              element={<OrderSummaryShotsOrder />}
+            />
+            <Route
+              path={APP_LINK.EDITCUSTOMERORDER}
+              element={<EditCustomer />}
+            />
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </main>

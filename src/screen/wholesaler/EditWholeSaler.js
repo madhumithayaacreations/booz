@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Box,
-  Button,
-  Typography,
-  Grid,
-  Container,
-} from "@mui/material";
+import { Box, Button, Typography, Grid, Container } from "@mui/material";
 import {
   StyledContainer,
   StyledButton,
@@ -68,7 +62,7 @@ const EditWholesaler = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
+  };
 
   const proofImage = () => {
     if (proofSelected) {
@@ -79,17 +73,17 @@ const EditWholesaler = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
-  
-    const onSubmit = (data) => {
-      if (data) {
-        setIsSuccess(true);
-        setDialogOpen(true);
-      } else {
-        setIsSuccess(false);
-        setDialogOpen(true);
-      }
-    };
+  };
+
+  const onSubmit = (data) => {
+    if (data) {
+      setIsSuccess(true);
+      setDialogOpen(true);
+    } else {
+      setIsSuccess(false);
+      setDialogOpen(true);
+    }
+  };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -110,11 +104,7 @@ const EditWholesaler = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box>
-            <Typography
-              variant="h5"
-              gutterBottom
-              sx={ styles.title }
-            >
+            <Typography variant="h5" gutterBottom sx={styles.title}>
               Edit WholeSaler Information
             </Typography>
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
@@ -130,7 +120,7 @@ const EditWholesaler = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -174,11 +164,7 @@ const EditWholesaler = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
-<<<<<<< HEAD
-              Upload Minimum 2 Govt ID Proof Of Wholesaler 
-=======
               Upload Minimum 2 Govt ID Proof Of Bar/club
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
             </Typography>
             <StyledContainer>
               <Grid container spacing={2}>
@@ -188,7 +174,7 @@ const EditWholesaler = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -231,10 +217,10 @@ const EditWholesaler = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box>
-          <Typography
+            <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.textFieldContainer }
+              sx={styles.textFieldContainer}
             >
               Name
             </Typography>
@@ -249,11 +235,11 @@ const EditWholesaler = () => {
               helperText={errors.name ? errors.name.message : ""}
             />
           </Box>
-          <Box >
-          <Typography
+          <Box>
+            <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.textFieldContainer }
+              sx={styles.textFieldContainer}
             >
               Address
             </Typography>
@@ -270,10 +256,10 @@ const EditWholesaler = () => {
             />
           </Box>
           <Box>
-          <Typography
+            <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.textFieldContainer }
+              sx={styles.textFieldContainer}
             >
               Email Address
             </Typography>
@@ -298,10 +284,10 @@ const EditWholesaler = () => {
             />
           </Box>
           <Box>
-          <Typography
+            <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.textFieldContainer }
+              sx={styles.textFieldContainer}
             >
               Phone No
             </Typography>
@@ -323,10 +309,10 @@ const EditWholesaler = () => {
             />
           </Box>
           <Box>
-          <Typography
+            <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.textFieldContainer }
+              sx={styles.textFieldContainer}
             >
               Working Time
             </Typography>
@@ -343,7 +329,7 @@ const EditWholesaler = () => {
               helperText={errors.shop ? errors.shop.message : ""}
             />
           </Box>
-          <Box sx={ styles.submitGap }>
+          <Box sx={styles.submitGap}>
             <Grid item xs={3}>
               <StyledButton
                 sx={styles.submitButtonContainer}
@@ -355,8 +341,8 @@ const EditWholesaler = () => {
           </Box>
         </Grid>
       </Grid>
-     {/* Snackbar */}
-     <CommonSnackbar
+      {/* Snackbar */}
+      <CommonSnackbar
         open={snackbarOpen}
         message={snackbarMessage}
         severity={snackbarSeverity}

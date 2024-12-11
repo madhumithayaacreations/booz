@@ -1,0 +1,40 @@
+.form-input-container.hidden *:not(.error-text) {
+    display: none !important;
+  }
+  
+  .form-input-container input {
+    font-size: 16px !important;
+  }
+  
+  .form-input-container fieldset {
+    border-radius: 4px;
+  }
+  
+  .form-input-container .hide-count-button input::-webkit-outer-spin-button,
+  .form-input-container .hide-count-button input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  
+  .form-input-container .normal-border input:hover + fieldset,
+  .form-input-container .normal-border input:focus + fieldset {
+    border: 1px solid var(--secondary-main) !important;
+  }
+  
+  .form-input-container .normal-border input + fieldset {
+    border: 1px solid var(--primary-main) !important;
+  }
+  
+  .form-input-container .form-input.multiple-line {
+    padding-right: 0px !important;
+    height: 200px !important;
+    overflow-y: hidden !important;
+  }
+  
+  .form-input-container .form-input.multiple-line textarea,
+  .form-input-container .form-input.multiple-line fieldset {
+    height: 100% !important;
+    overflow-y: auto !important;
+  }

@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Box,
-  Button,
-  Typography,
-  Grid,
-  Container,
-} from "@mui/material";
+import { Box, Button, Typography, Grid, Container } from "@mui/material";
 import {
   StyledContainer,
   StyledButton,
@@ -68,7 +62,7 @@ const AddWholesaler = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
+  };
 
   const proofImage = () => {
     if (proofSelected) {
@@ -79,17 +73,17 @@ const AddWholesaler = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
-  
-    const onSubmit = (data) => {
-      if (data) {
-        setIsSuccess(true);
-        setDialogOpen(true);
-      } else {
-        setIsSuccess(false);
-        setDialogOpen(true);
-      }
-    };
+  };
+
+  const onSubmit = (data) => {
+    if (data) {
+      setIsSuccess(true);
+      setDialogOpen(true);
+    } else {
+      setIsSuccess(false);
+      setDialogOpen(true);
+    }
+  };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -110,11 +104,7 @@ const AddWholesaler = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box>
-            <Typography
-              variant="h5"
-              gutterBottom
-              sx={ styles.title }
-            >
+            <Typography variant="h5" gutterBottom sx={styles.title}>
               Add New WholeSaler
             </Typography>
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
@@ -130,7 +120,7 @@ const AddWholesaler = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -174,11 +164,7 @@ const AddWholesaler = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
-<<<<<<< HEAD
-              Upload Minimum 2 Govt ID Proof Of Wholesaler 
-=======
               Upload Minimum 2 Govt ID Proof Of Bar/club
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
             </Typography>
             <StyledContainer>
               <Grid container spacing={2}>
@@ -188,7 +174,7 @@ const AddWholesaler = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -230,8 +216,8 @@ const AddWholesaler = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-        <Box sx={ styles.textFieldContainer }>
-        <StyledTextField
+          <Box sx={styles.textFieldContainer}>
+            <StyledTextField
               label="Name"
               required
               id="name"
@@ -243,7 +229,7 @@ const AddWholesaler = () => {
               helperText={errors.name ? errors.name.message : ""}
             />
           </Box>
-          <Box sx={ styles.textFieldContainer }>
+          <Box sx={styles.textFieldContainer}>
             <StyledTextField
               required
               label="Address"
@@ -257,7 +243,7 @@ const AddWholesaler = () => {
               helperText={errors.address ? errors.address.message : ""}
             />
           </Box>
-          <Box sx={ styles.textFieldContainer }>
+          <Box sx={styles.textFieldContainer}>
             <StyledTextField
               label="Email ID Address"
               required
@@ -279,7 +265,7 @@ const AddWholesaler = () => {
               helperText={errors.email ? errors.email.message : ""}
             />
           </Box>
-          <Box sx={ styles.textFieldContainer }>
+          <Box sx={styles.textFieldContainer}>
             <StyledTextField
               label="Phone No"
               required
@@ -298,7 +284,7 @@ const AddWholesaler = () => {
               helperText={errors.phoneNo ? errors.phoneNo.message : ""}
             />
           </Box>
-          <Box sx={ styles.textFieldContainer }>
+          <Box sx={styles.textFieldContainer}>
             <StyledTextField
               label="Longitude"
               required
@@ -313,7 +299,7 @@ const AddWholesaler = () => {
               helperText={errors.longitude ? errors.longitude.message : ""}
             />
           </Box>
-          <Box sx={ styles.textFieldContainer }>
+          <Box sx={styles.textFieldContainer}>
             <StyledTextField
               label="Shop Open and Close time"
               required
@@ -328,7 +314,7 @@ const AddWholesaler = () => {
               helperText={errors.shop ? errors.shop.message : ""}
             />
           </Box>
-          <Box sx={ styles.submitGap }>
+          <Box sx={styles.submitGap}>
             <Grid item xs={3}>
               <StyledButton
                 sx={styles.submitButtonContainer}

@@ -70,7 +70,7 @@ const EditClub = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
+  };
 
   const proofImage = () => {
     if (proofSelected) {
@@ -81,17 +81,17 @@ const EditClub = () => {
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  }
-  
-    const onSubmit = (data) => {
-      if (data) {
-        setIsSuccess(true);
-        setDialogOpen(true);
-      } else {
-        setIsSuccess(false);
-        setDialogOpen(true);
-      }
-    };
+  };
+
+  const onSubmit = (data) => {
+    if (data) {
+      setIsSuccess(true);
+      setDialogOpen(true);
+    } else {
+      setIsSuccess(false);
+      setDialogOpen(true);
+    }
+  };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -112,11 +112,7 @@ const EditClub = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box>
-            <Typography
-              variant="h5"
-              gutterBottom
-              sx={ styles.title }
-            >
+            <Typography variant="h5" gutterBottom sx={styles.title}>
               Edit Bar/Club Information
             </Typography>
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
@@ -132,7 +128,7 @@ const EditClub = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -186,7 +182,7 @@ const EditClub = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={ styles.image }
+                    style={styles.image}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -229,15 +225,7 @@ const EditClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Name
             </Typography>
             <StyledTextField
@@ -252,15 +240,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Address
             </Typography>
             <StyledTextField
@@ -276,15 +256,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Goole Map URL
             </Typography>
             <StyledTextField
@@ -301,15 +273,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Latitude
             </Typography>
             <StyledTextField
@@ -326,15 +290,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Longitude
             </Typography>
             <StyledTextField
@@ -351,15 +307,7 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={ styles.textFieldContainer }
-            >
-=======
             <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Working Time
             </Typography>
             <StyledTextField
@@ -375,7 +323,7 @@ const EditClub = () => {
               helperText={errors.shop ? errors.shop.message : ""}
             />
           </Box>
-          <Box sx={ styles.submitGap }>
+          <Box sx={styles.submitGap}>
             <Grid item xs={3}>
               <StyledButton
                 sx={styles.submitButtonContainer}

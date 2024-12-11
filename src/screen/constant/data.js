@@ -1,6 +1,49 @@
 import jja from "../../image/jjs.png";
 import bsw from "../../image/bsw.png";
 
+export const data = [
+  {
+    id: "Series 1",
+    data: [
+      { x: "Jan", y: 300000 },
+      { x: "Feb", y: 400000 },
+      { x: "Mar", y: 600000 },
+      { x: "Apr", y: 500000 },
+      { x: "May", y: 700000 },
+      { x: "Jun", y: 400000 },
+      { x: "Jul", y: 600000 },
+      { x: "Aug", y: 500000 },
+      { x: "Sep", y: 700000 },
+    ],
+  },
+];
+export const WeekData = [
+  {
+    id: "Series 1",
+    data: [
+      { x: "Week 1", y: 300000 },
+      { x: "Week 2", y: 400000 },
+      { x: "Week 3", y: 600000 },
+      { x: "Week 4", y: 400000 },
+      { x: "Week 5", y: 700000 },
+      { x: "Week 6", y: 400000 },
+      { x: "Week 7", y: 200000 },
+      { x: "Week 8", y: 400000 },
+      { x: "Week 9", y: 700000 },
+    ],
+  },
+];
+
+export const DateData = [
+  {
+    id: "Series 1",
+    data: [
+      { x: "6/11/24", y: 300000 },
+      { x: "6/12/24", y: 400000 },
+    ],
+  },
+];
+
 export const addProducts = () => [
   {
     id: 1,

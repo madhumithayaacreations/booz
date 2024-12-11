@@ -12,19 +12,44 @@ import Bottles from "../../../image/pngwing.com (13).png";
 import SalesReportGraph from "../../constant/SalesReportGraph";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { data as salesData, WeekData, DateData } from "../../constant/data";
+import { graphStyle } from "../../bar/club/SalesStyles";
 
 const SalesReportForm = () => {
-  const navigator=useNavigate();
+  const navigator = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [timeFrame, setTimeFrame] = useState("Month");
 
+  const salesDataArray = Array.isArray(salesData[0]?.data)
+    ? salesData[0].data
+    : [];
+  const WeekDataArray = Array.isArray(WeekData[0]?.data)
+    ? WeekData[0].data
+    : [];
+  const DateDataArray = Array.isArray(DateData[0]?.data)
+    ? DateData[0].data
+    : [];
+
+  const chartData =
+    timeFrame === "Month"
+      ? salesDataArray
+      : timeFrame === "Week"
+      ? WeekDataArray
+      : DateDataArray;
+  const formattedChartData = [
+    {
+      id: "Sales Data",
+      data: chartData,
+    },
+  ];
   const onSubmit = async (data) => {
     console.log(data);
-    navigator("/barAggregation/completesalesreport")
-
+    navigator("/barAggregation/completesalesreport");
   };
 
   return (
@@ -38,8 +63,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.salesTextFieldContainer }
-              >
+              sx={styles.salesTextFieldContainer}
+            >
               Name
             </Typography>
             <StyledTextField
@@ -57,11 +82,7 @@ const SalesReportForm = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={7} xl={7}>
           <Box>
-            <Typography
-              variant="h6"
-              fontSize={16}
-              sx={{ color: "#788088" }}
-            >
+            <Typography variant="h6" fontSize={16} sx={{ color: "#788088" }}>
               Address
             </Typography>
             <StyledTextField
@@ -85,8 +106,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.salesTextFieldContainer }
-              >
+              sx={styles.salesTextFieldContainer}
+            >
               Transactions
             </Typography>
             <StyledTextField
@@ -105,8 +126,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.salesTextFieldContainer }
-              >
+              sx={styles.salesTextFieldContainer}
+            >
               Bottles Sold
             </Typography>
             <StyledTextField
@@ -130,8 +151,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.salesTextFieldContainer }
-              >
+              sx={styles.salesTextFieldContainer}
+            >
               Shots Sold
             </Typography>
             <StyledTextField
@@ -155,8 +176,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={ styles.salesTextFieldContainer }
-              >
+              sx={styles.salesTextFieldContainer}
+            >
               Most Sold Brand
             </Typography>
             <StyledTextField
@@ -186,105 +207,38 @@ const SalesReportForm = () => {
                 <Typography variant="h5" fontSize={16} textAlign={"start"}>
                   Chart Order
                 </Typography>
-                <Box>
+                <Box sx={{ backgroundColor: "#ccc" }}>
                   <Button
+                    onClick={() => setTimeFrame("Month")}
                     sx={{
-                      color: "#101010",
-                      padding: "5px 20px",
-                      backgroundColor: "#ccc",
-                      "&:hover": { backgroundColor: "#fff", color: "blue" },
+                      backgroundColor: timeFrame === "Month" ? "#fff" : "#ccc",
+                      ...graphStyle.graphButton,
                     }}
                   >
                     Month
                   </Button>
                   <Button
+                    onClick={() => setTimeFrame("Week")}
                     sx={{
-                      color: "#101010",
-                      padding: "5px 20px",
-                      backgroundColor: "#ccc",
-                      "&:hover": { backgroundColor: "#fff", color: "blue" },
+                      backgroundColor: timeFrame === "Week" ? "#fff" : "#ccc",
+                      ...graphStyle.graphButton,
                     }}
                   >
-                    week
+                    Week
                   </Button>
                   <Button
+                    onClick={() => setTimeFrame("Day")}
                     sx={{
-                      color: "#101010",
-                      padding: "5px 20px",
-                      backgroundColor: "#ccc",
-                      "&:hover": { backgroundColor: "#fff", color: "blue" },
+                      backgroundColor: timeFrame === "Day" ? "#fff" : "#ccc",
+                      ...graphStyle.graphButton,
                     }}
                   >
                     Day
                   </Button>
                 </Box>
               </Box>
-              <Box display="flex" gap={3} pl={5}>
-                <Box>
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                  >
-                    <Box>
-                      <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        width="100%"
-                      >
-                        <img
-                          src={Bottles}
-                          alt="image"
-                          style={{ width: "30px", height: "50px" }}
-                        />
-                        <h3>125k</h3>
-                      </Box>
-                    </Box>
-                    <p
-                      style={{
-                        padding: 0,
-                        margin: 0,
-                        fontSize: 10,
-                      }}
-                    >
-                      Total sales
-                    </p>
-                  </Box>
-                </Box>
-                <Box>
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                  >
-                    <Box>
-                      <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        width="100%"
-                      >
-                        <img
-                          src={glass}
-                          alt="image"
-                          style={{ width: "30px", height: "50px" }}
-                        />
-                        <h3>225k</h3>
-                      </Box>
-                    </Box>
-                    <p
-                      style={{
-                        padding: 0,
-                        margin: 0,
-                        fontSize: 10,
-                      }}
-                    >
-                      Avg sales per day
-                    </p>
-                  </Box>
-                </Box>
-              </Box>
               <Box>
-                <SalesReportGraph></SalesReportGraph>
+                <SalesReportGraph data={formattedChartData} />
               </Box>
             </StyledContainer>
           </Box>
@@ -295,7 +249,7 @@ const SalesReportForm = () => {
               sx={{ color: "#101010", padding: "10px 30px" }}
               onClick={handleSubmit(onSubmit)}
             >
-             Download Excel Report
+              Download Excel Report
             </StyledButton1>
           </Box>
           <Box pt={1}>
@@ -308,8 +262,7 @@ const SalesReportForm = () => {
               sx={{ padding: "10px 75px" }}
               onClick={handleSubmit(onSubmit)}
             >
-               View Report
-              
+              View Report
             </StyledButton>
           </Box>
         </Grid>

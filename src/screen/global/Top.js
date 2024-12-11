@@ -11,11 +11,7 @@ import {
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-<<<<<<< HEAD
-import { topbarStyles } from "../components/TopStyles"; 
-=======
-import { topbarStyles } from "./TopStyles";
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
+import { topbarStyles } from "../components/TopStyles";
 
 const Topbar = () => {
   const theme = useTheme();
