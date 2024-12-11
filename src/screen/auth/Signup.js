@@ -11,10 +11,9 @@ import { StyledBox,
   StyledButton2,
   StyledTextField,
   styles,
- } from "./LoginStyles";
-import "./register.css";
-import Logo from "../../image/boozLogo.png";
-
+ } from "../components/LoginStyles";
+ import "../../style/register.css";
+ import Logo from "../../image/boozLogo.png";
 
 export default function Register() {
   const form = useForm({

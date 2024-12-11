@@ -5,6 +5,7 @@ import {
   StyledButton1,
   StyledContainer,
 } from "../../components/style";
+import { styles } from "../../components/formStyles";
 import "../../../style/style.css";
 import glass from "../../../image/pngwing.com (7) 2.png";
 import Bottles from "../../../image/pngwing.com (13).png";
@@ -27,7 +28,7 @@ const SalesReportForm = () => {
   };
 
   return (
-    <Box padding={10}>
+    <Box padding={3}>
       <Typography variant="h4" fontWeight={700}>
         06/11/2024 to 06/12/2024 Sales Report Form
       </Typography>
@@ -37,8 +38,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
-            >
+              sx={ styles.salesTextFieldContainer }
+              >
               Name
             </Typography>
             <StyledTextField
@@ -59,7 +60,7 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={{ color: "#788088" }}
             >
               Address
             </Typography>
@@ -78,14 +79,14 @@ const SalesReportForm = () => {
           </Box>
         </Grid>
       </Grid>
-      <Grid container spacing={2} pt={3}>
+      <Grid container spacing={2} pt={0}>
         <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
           <Box>
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
-            >
+              sx={ styles.salesTextFieldContainer }
+              >
               Transactions
             </Typography>
             <StyledTextField
@@ -104,8 +105,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
-            >
+              sx={ styles.salesTextFieldContainer }
+              >
               Bottles Sold
             </Typography>
             <StyledTextField
@@ -129,8 +130,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
-            >
+              sx={ styles.salesTextFieldContainer }
+              >
               Shots Sold
             </Typography>
             <StyledTextField
@@ -154,8 +155,8 @@ const SalesReportForm = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
-            >
+              sx={ styles.salesTextFieldContainer }
+              >
               Most Sold Brand
             </Typography>
             <StyledTextField

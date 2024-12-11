@@ -7,9 +7,9 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import { Link, useLocation } from "react-router-dom";
 import CustomMenuItem from "./CustomMenu";
 import menuItems from "./MenuItems";
-import sidebarStyles from "./SideStyles";
+import sidebarStyles from "../components/SideStyles";
 import Logo from "../../image/boozLogo.png";
-import "./Side.css";
+import "../../style/Side.css";
 
 const SideBar = () => {
   const theme = useTheme();

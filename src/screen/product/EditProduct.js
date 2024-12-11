@@ -4,17 +4,17 @@ import {
   Box,
   Button,
   Typography,
-  Grid,
-  Snackbar,
-  Alert,
   Container,
+  Grid,
 } from "@mui/material";
 import {
   StyledContainer,
   StyledButton,
   StyledTextField,
   styles,
-} from "./ProductStyles";
+} from "../components/formStyles";
+import CommonSnackbar from "../notification/Snackbar";
+import CommonDialog from "../notification/Dialogbox";
 
 const EditProduct = () => {
   const {
@@ -28,6 +28,8 @@ const EditProduct = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -42,17 +44,26 @@ const EditProduct = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const handleImage = () => {
     if (selectedFile) {
-      console.log("Saving customer details with file:", selectedFile.name);
       showSnackbar(
-        `Customer details saved with file: ${selectedFile.name}`,
+        `Product details saved with file: ${selectedFile.name}`,
         "success"
       );
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  };
+  }
+  
+    const onSubmit = (data) => {
+      if (data) {
+        setIsSuccess(true);
+        setDialogOpen(true);
+      } else {
+        setIsSuccess(false);
+        setDialogOpen(true);
+      }
+    };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -62,6 +73,10 @@ const EditProduct = () => {
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -112,7 +127,7 @@ const EditProduct = () => {
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={handleImage}
                       size="small"
                     >
                       Save
@@ -123,16 +138,20 @@ const EditProduct = () => {
             </StyledContainer>
           </Box>
         </Grid>
-        
+
         {/* Form section */}
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           {[
-            { label: "#C-004567", id: "brand", errorKey: "brand" },
-            { label: "Jamson whiskey", id: "bottleName", errorKey: "bottleName" },
-            { label: "750ml", id: "typeOfQuantity", errorKey: "typeOfQuantity" },
-            { label: "#019740918087", id: "sku", errorKey: "sku" },
-            { label: "$250 SGD", id: "price", errorKey: "price" },
-            { label: "200", id: "quantity", errorKey: "quantity" },
+            { label: "Brands", id: "brand", errorKey: "brand" },
+            { label: "Bottle Name", id: "bottleName", errorKey: "bottleName" },
+            {
+              label: "Type of Quantity",
+              id: "typeOfQuantity",
+              errorKey: "typeOfQuantity",
+            },
+            { label: "SKU", id: "sku", errorKey: "sku" },
+            { label: "Price", id: "price", errorKey: "price" },
+            { label: "Quantity", id: "quantity", errorKey: "quantity" },
           ].map((field, index) => (
             <Box key={index} sx={styles.textFieldContainer}>
               <StyledTextField
@@ -141,16 +160,18 @@ const EditProduct = () => {
                 size="large"
                 fullWidth
                 multiline
-                {...register(field.id, { required: `${field.label} is required` })}
+                {...register(field.id, {
+                  required: `${field.label} is required`,
+                })}
                 error={!!errors[field.errorKey]}
                 helperText={errors[field.errorKey]?.message}
               />
             </Box>
           ))}
-          <Box sx={{ mt: 4, mb: 3 }}>
+          <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit
@@ -159,20 +180,22 @@ const EditProduct = () => {
           </Box>
         </Grid>
       </Grid>
-      <Snackbar
+       {/* Snackbar */}
+       <CommonSnackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      />
+
+      {/* Dialog */}
+      <CommonDialog
+        open={dialogOpen}
+        isSuccess={isSuccess}
+        onClose={handleDialogClose}
+        messageSuccess="Product updated successfully!"
+        messageError="Failed to update the product."
+      />
     </Container>
   );
 };

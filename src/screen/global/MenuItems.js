@@ -5,7 +5,10 @@ import CloudSyncOutlinedIcon from "@mui/icons-material/CloudSyncOutlined";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 
-const APP_LINK = {
+export const APP_LINK = {
+  LOGIN: "/",
+  REGISTER: "/register",
+  FORGOTPASSWORD: "/forgot-password",
   DASHBOARD: "/dashboard",
   ADDPRODUCT: "/products/add",
   EDITPRODUCT: "/products/edit",
@@ -32,7 +35,19 @@ const APP_LINK = {
   GENERALCUSTOMERORDER: "/customerOrder/general",
   BOTTLESORDERED: "/customerOrder/bottle-order",
   SHOTSORDERED: "/customerOrder/shots-order",
-};
+}; 
+
+export const items = [
+  {
+    url: APP_LINK.LOGIN,
+  },
+  {
+    url: APP_LINK.REGISTER,
+  },
+  {
+    url: APP_LINK.FORGOTPASSWORD,
+  },
+]
 
 const menuItems = [
   {
@@ -69,7 +84,7 @@ const menuItems = [
     icon: <CloudSyncOutlinedIcon />,
     label: "Bar Aggregation",
     submenu: [
-      { name: "Add New", url: APP_LINK.ADBARAGGREGATION },
+      { name: "Add New", url: APP_LINK.ADDBARAGGREGATION },
       { name: "Edit", url: APP_LINK.EDITBARAGGREGATION },
       { name: "Bar/Club Sales Report", url: APP_LINK.BARCLUBSALESREPORT },
       { name: "Sales Report", url: APP_LINK.BARAGGREGATIONSREPORT },

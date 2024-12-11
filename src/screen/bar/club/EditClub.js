@@ -4,20 +4,19 @@ import {
   Box,
   Button,
   Typography,
-  TextField,
-  Card,
   Grid,
   Snackbar,
   Alert,
   Container,
-  styled,
 } from "@mui/material";
 import {
   StyledContainer,
   StyledButton,
   StyledTextField,
   styles,
-} from "./ClubStyles";
+} from "../../components/formStyles";
+import CommonSnackbar from "../../notification/Snackbar";
+import CommonDialog from "../../notification/Dialogbox";
 
 const EditClub = () => {
   const {
@@ -27,10 +26,14 @@ const EditClub = () => {
     formState: { errors },
   } = useForm();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [proofSelected, setProofSelected] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [proofPreview, setProofPreview] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -45,18 +48,50 @@ const EditClub = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const handleProofChange = (event) => {
+    const proof = event.target.files[0];
+    if (proof) {
+      if (proof.size <= 200 * 1024) {
+        setProofSelected(proof);
+        setProofPreview(URL.createObjectURL(proof));
+        setValue("proofName", proof.name);
+      } else {
+        showSnackbar("Please select a file smaller than 200kB.", "error");
+      }
+    }
+  };
+
+  const handleImage = () => {
     if (selectedFile) {
-      console.log("Saving customer details with file:", selectedFile.name);
-      console.log("Form Data:", { ...data, fileName: selectedFile.name });
       showSnackbar(
-        `Customer details saved with file: ${selectedFile.name}`,
+        `Product details saved with file: ${selectedFile.name}`,
         "success"
       );
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  };
+  }
+
+  const proofImage = () => {
+    if (proofSelected) {
+      showSnackbar(
+        `Product details saved with file: ${proofSelected.name}`,
+        "success"
+      );
+    } else {
+      showSnackbar("Please choose a file before saving.", "error");
+    }
+  }
+  
+    const onSubmit = (data) => {
+      if (data) {
+        setIsSuccess(true);
+        setDialogOpen(true);
+      } else {
+        setIsSuccess(false);
+        setDialogOpen(true);
+      }
+    };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -68,6 +103,10 @@ const EditClub = () => {
     setSnackbarOpen(false);
   };
 
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
   return (
     <Container>
       <Grid container spacing={2}>
@@ -76,10 +115,7 @@ const EditClub = () => {
             <Typography
               variant="h5"
               gutterBottom
-              sx={{
-                color: "#3E4954",
-                fontWeight: "bold",
-              }}
+              sx={ styles.title }
             >
               Edit Bar/Club Information
             </Typography>
@@ -96,7 +132,7 @@ const EditClub = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={{ borderRadius: "4px" }}
+                    style={ styles.image }
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -126,7 +162,7 @@ const EditClub = () => {
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={handleImage}
                       size="small"
                     >
                       Save
@@ -146,11 +182,11 @@ const EditClub = () => {
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={2} xl={2}>
                   <img
-                    src={imagePreview || "https://via.placeholder.com/80"}
+                    src={proofPreview || "https://via.placeholder.com/80"}
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={{ borderRadius: "4px" }}
+                    style={ styles.image }
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -165,22 +201,22 @@ const EditClub = () => {
                       size="small"
                     >
                       Choose File
-                      <input type="file" hidden onChange={handleFileChange} />
+                      <input type="file" hidden onChange={handleProofChange} />
                     </Button>
                     <Button
                       variant="contained"
-                      sx={styles.fileNameButton(selectedFile)}
-                      disabled={!selectedFile}
+                      sx={styles.fileNameButton(proofSelected)}
+                      disabled={!proofSelected}
                       size="small"
                     >
-                      {selectedFile ? selectedFile.name : "No File Chosen"}
+                      {proofSelected ? proofSelected.name : "No File Chosen"}
                     </Button>
                   </Box>
                   <Box sx={styles.saveButtonContainer}>
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={proofImage}
                       size="small"
                     >
                       Save
@@ -196,12 +232,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Name
             </Typography>
             <StyledTextField
-              label="yXdxfL"
+              label="Name"
               id="name"
               size="large"
               fullWidth
@@ -215,13 +251,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Address
             </Typography>
             <StyledTextField
-              label="6 Raffles, Roofles Link,
-              #01-20, Singapore"
+              label="Address"
               id="address"
               rows={4}
               size="large"
@@ -236,12 +271,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Goole Map URL
             </Typography>
             <StyledTextField
-              label="https://ww.goggle.com/location"
+              label="Goole Map URL"
               id="googleMap"
               size="large"
               fullWidth
@@ -255,12 +290,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Latitude
             </Typography>
             <StyledTextField
-              label="9.67891597"
+              label="Latitude"
               id="latitude"
               size="large"
               fullWidth
@@ -276,12 +311,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Longitude
             </Typography>
             <StyledTextField
-              label="82.187696"
+              label="Longitude"
               id="longitude"
               size="large"
               fullWidth
@@ -297,12 +332,12 @@ const EditClub = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, }}
+              sx={ styles.textFieldContainer }
             >
               Working Time
             </Typography>
             <StyledTextField
-              label="9amto10pm"
+              label="Working Time"
               id="shop"
               size="large"
               fullWidth
@@ -314,7 +349,7 @@ const EditClub = () => {
               helperText={errors.shop ? errors.shop.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 4, mb: 3 }}>
+          <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
                 sx={ styles.submitButtonContainer }
@@ -326,19 +361,22 @@ const EditClub = () => {
           </Box>
         </Grid>
       </Grid>
-      <Snackbar
+      {/* Snackbar */}
+      <CommonSnackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
         onClose={handleSnackbarClose}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      />
+
+      {/* Dialog */}
+      <CommonDialog
+        open={dialogOpen}
+        isSuccess={isSuccess}
+        onClose={handleDialogClose}
+        messageSuccess="Bar/Club updated successfully!"
+        messageError="Failed to update the bar/club."
+      />
     </Container>
   );
 };

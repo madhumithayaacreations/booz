@@ -4,22 +4,19 @@ import {
   Box,
   Button,
   Typography,
-  TextField,
-  Card,
   Grid,
-  Snackbar,
-  Alert,
   Container,
-  styled,
 } from "@mui/material";
 import {
   StyledContainer,
   StyledButton,
   StyledTextField,
   styles,
-} from "./WholeSaleStyles";
+} from "../components/formStyles";
+import CommonSnackbar from "../notification/Snackbar";
+import CommonDialog from "../notification/Dialogbox";
 
-const EditClub = () => {
+const AddWholesaler = () => {
   const {
     register,
     handleSubmit,
@@ -27,10 +24,14 @@ const EditClub = () => {
     formState: { errors },
   } = useForm();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [proofSelected, setProofSelected] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [proofPreview, setProofPreview] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -45,18 +46,50 @@ const EditClub = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const handleProofChange = (event) => {
+    const proof = event.target.files[0];
+    if (proof) {
+      if (proof.size <= 200 * 1024) {
+        setProofSelected(proof);
+        setProofPreview(URL.createObjectURL(proof));
+        setValue("proofName", proof.name);
+      } else {
+        showSnackbar("Please select a file smaller than 200kB.", "error");
+      }
+    }
+  };
+
+  const handleImage = () => {
     if (selectedFile) {
-      console.log("Saving customer details with file:", selectedFile.name);
-      console.log("Form Data:", { ...data, fileName: selectedFile.name });
       showSnackbar(
-        `Customer details saved with file: ${selectedFile.name}`,
+        `Product details saved with file: ${selectedFile.name}`,
         "success"
       );
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  };
+  }
+
+  const proofImage = () => {
+    if (proofSelected) {
+      showSnackbar(
+        `Product details saved with file: ${proofSelected.name}`,
+        "success"
+      );
+    } else {
+      showSnackbar("Please choose a file before saving.", "error");
+    }
+  }
+  
+    const onSubmit = (data) => {
+      if (data) {
+        setIsSuccess(true);
+        setDialogOpen(true);
+      } else {
+        setIsSuccess(false);
+        setDialogOpen(true);
+      }
+    };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -68,6 +101,10 @@ const EditClub = () => {
     setSnackbarOpen(false);
   };
 
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
   return (
     <Container>
       <Grid container spacing={2}>
@@ -76,15 +113,12 @@ const EditClub = () => {
             <Typography
               variant="h5"
               gutterBottom
-              sx={{
-                color: "#3E4954",
-                fontWeight: "bold",
-              }}
+              sx={ styles.title }
             >
               Add New WholeSaler
             </Typography>
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
-              Add Minimum 2 Images Bar/Club
+              Add Minimum 2 Images Wholesaler
             </Typography>
           </Box>
           <Box>
@@ -96,7 +130,7 @@ const EditClub = () => {
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={{ borderRadius: "4px" }}
+                    style={ styles.image }
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -126,7 +160,7 @@ const EditClub = () => {
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={handleImage}
                       size="small"
                     >
                       Save
@@ -140,17 +174,17 @@ const EditClub = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
-              Upload Minimum 2 Govt ID Proof Of Bar/club 
+              Upload Minimum 2 Govt ID Proof Of Wholesaler 
             </Typography>
             <StyledContainer>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={2} xl={2}>
                   <img
-                    src={imagePreview || "https://via.placeholder.com/80"}
+                    src={proofPreview || "https://via.placeholder.com/80"}
                     alt="Customer Profile"
                     width={80}
                     height={80}
-                    style={{ borderRadius: "4px" }}
+                    style={ styles.image }
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -165,22 +199,22 @@ const EditClub = () => {
                       size="small"
                     >
                       Choose File
-                      <input type="file" hidden onChange={handleFileChange} />
+                      <input type="file" hidden onChange={handleProofChange} />
                     </Button>
                     <Button
                       variant="contained"
-                      sx={styles.fileNameButton(selectedFile)}
-                      disabled={!selectedFile}
+                      sx={styles.fileNameButton(proofSelected)}
+                      disabled={!proofSelected}
                       size="small"
                     >
-                      {selectedFile ? selectedFile.name : "No File Chosen"}
+                      {proofSelected ? proofSelected.name : "No File Chosen"}
                     </Button>
                   </Box>
                   <Box sx={styles.saveButtonContainer}>
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={proofImage}
                       size="small"
                     >
                       Save
@@ -192,8 +226,8 @@ const EditClub = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
-            <StyledTextField
+        <Box sx={ styles.textFieldContainer }>
+        <StyledTextField
               label="Name"
               required
               id="name"
@@ -205,7 +239,7 @@ const EditClub = () => {
               helperText={errors.name ? errors.name.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               required
               label="Address"
@@ -219,7 +253,7 @@ const EditClub = () => {
               helperText={errors.address ? errors.address.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Email ID Address"
               required
@@ -241,7 +275,7 @@ const EditClub = () => {
               helperText={errors.email ? errors.email.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Phone No"
               required
@@ -260,9 +294,9 @@ const EditClub = () => {
               helperText={errors.phoneNo ? errors.phoneNo.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
-              label="Phone No"
+              label="Longitude"
               required
               id="phoneNo"
               size="large"
@@ -275,7 +309,7 @@ const EditClub = () => {
               helperText={errors.longitude ? errors.longitude.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Shop Open and Close time"
               required
@@ -290,7 +324,7 @@ const EditClub = () => {
               helperText={errors.shop ? errors.shop.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 4, mb: 3 }}>
+          <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
                 sx={styles.submitButtonContainer}
@@ -302,21 +336,24 @@ const EditClub = () => {
           </Box>
         </Grid>
       </Grid>
-      <Snackbar
+      {/* Snackbar */}
+      <CommonSnackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
         onClose={handleSnackbarClose}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      />
+
+      {/* Dialog */}
+      <CommonDialog
+        open={dialogOpen}
+        isSuccess={isSuccess}
+        onClose={handleDialogClose}
+        messageSuccess="Wholesaler added successfully!"
+        messageError="Failed to add the wholesaler."
+      />
     </Container>
   );
 };
 
-export default EditClub;
+export default AddWholesaler;
