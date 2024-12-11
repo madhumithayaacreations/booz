@@ -56,7 +56,6 @@ const SideBar = () => {
             <MenuOutlinedIcon />
           </IconButton>
         </Box>
-
         {/* Scrollable Menu */}
         <PerfectScrollbar
           options={{ suppressScrollX: true, wheelPropagation: false }}
@@ -90,7 +89,6 @@ const SideBar = () => {
                       {!isCollapsed && menuItem.label}
                     </CustomMenuItem>
                   </Link>
-
                   {/* Submenu Items */}
                   {menuItem.submenu &&
                     openSubmenus[menuItem.key] &&
