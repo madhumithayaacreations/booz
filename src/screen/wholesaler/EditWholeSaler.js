@@ -174,11 +174,7 @@ const EditWholesaler = () => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={5}>
           <Box marginTop="26px">
             <Typography variant="p" gutterBottom sx={styles.photoHeading}>
-<<<<<<< HEAD
               Upload Minimum 2 Govt ID Proof Of Wholesaler 
-=======
-              Upload Minimum 2 Govt ID Proof Of Bar/club
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
             </Typography>
             <StyledContainer>
               <Grid container spacing={2}>

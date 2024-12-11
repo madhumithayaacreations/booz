@@ -5,8 +5,6 @@ import {
   Button,
   Typography,
   Grid,
-  Snackbar,
-  Alert,
   Container,
 } from "@mui/material";
 import {
@@ -229,15 +227,11 @@ const EditClub = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Name
             </Typography>
             <StyledTextField
@@ -252,15 +246,11 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Address
             </Typography>
             <StyledTextField
@@ -276,15 +266,11 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Goole Map URL
             </Typography>
             <StyledTextField
@@ -301,15 +287,11 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Latitude
             </Typography>
             <StyledTextField
@@ -326,15 +308,11 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Longitude
             </Typography>
             <StyledTextField
@@ -351,15 +329,11 @@ const EditClub = () => {
             />
           </Box>
           <Box>
-<<<<<<< HEAD
             <Typography
               variant="h6"
               fontSize={16}
               sx={ styles.textFieldContainer }
             >
-=======
-            <Typography variant="h6" fontSize={16} sx={{ mt: 1, mb: 1 }}>
->>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
               Working Time
             </Typography>
             <StyledTextField
