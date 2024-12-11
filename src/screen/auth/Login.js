@@ -11,10 +11,10 @@ import {
   StyledButton1,
   StyledTextField,
   styles,
-} from "./LoginStyles";
-import "./register.css";
+} from "../components/LoginStyles";
+import "../../style/register.css";
 import Logo from "../../image/boozLogo.png";
-import "./login.css";
+import "../../style/login.css";
 
 const Login = () => {
   // const dispatch = useDispatch();

@@ -1,28 +1,137 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+import {
+  Box,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  IconButton,
+  Stack,
+} from "@mui/material";
+=======
 import React from "react";
 import { Grid, Box, Typography, Paper, Button } from "@mui/material";
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
+import {
+  containerStyles,
+  tableContainerStyles,
+  tableStyles,
+  tableCellHeaderStyles,
+  tableCellBodyStyles,
+  tableRowLabelCellStyles,
+  stackStyles,
+  paperStyles,
+  typographyBody1Styles,
+} from "../components/formStyles";
 
-const AccessControlGrid = () => {
-  const handleToggle = (currentState) => {
-    return currentState === "tick" ? "cross" : "tick";
+const AccessControl = () => {
+  const [accessState, setAccessState] = useState({
+    admin: { view: true, edit: true, delete: true },
+    wholesaler: { view: true, edit: true, delete: true },
+    club: { view: true, edit: true, delete: false },
+  });
+
+  const toggleAccess = (role, accessType) => {
+    setAccessState((prevState) => ({
+      ...prevState,
+      [role]: {
+        ...prevState[role],
+        [accessType]: !prevState[role][accessType],
+      },
+    }));
   };
 
-  const renderButton = (state, setState) => {
-    return (
-      <Button
-        onClick={() => setState(handleToggle(state))}
-        sx={{ minWidth: "60px", minHeight: "60px" }}
-      >
-        {state === "tick" ? (
-          <CheckCircleIcon sx={{ color: "green", fontSize: "40px" }} />
-        ) : (
-          <CancelIcon sx={{ color: "red", fontSize: "40px" }} />
-        )}
-      </Button>
-    );
-  };
+  const roles = [
+    { key: "admin", label: "Admin Access" },
+    { key: "wholesaler", label: "Wholesaler Access" },
+    { key: "club", label: "Club Access" },
+  ];
 
+<<<<<<< HEAD
+  const accessTypes = ["view", "edit", "delete"];
+
+  return (
+    <Box sx={containerStyles}>
+      <Typography variant="h5" align="center" gutterBottom></Typography>
+      <Grid container spacing={3} justifyContent="center">
+        <Grid item xs={12} md={8}>
+          <TableContainer sx={tableContainerStyles}>
+            <Table sx={tableStyles}>
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={tableCellHeaderStyles}></TableCell>
+                  {accessTypes.map((accessType) => (
+                    <TableCell key={accessType} sx={tableCellHeaderStyles}>
+                      {accessType.charAt(0).toUpperCase() + accessType.slice(1)}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {roles.map((role, rowIndex) => (
+                  <TableRow key={role.key}>
+                    <TableCell sx={tableRowLabelCellStyles}>
+                      {role.label}
+                    </TableCell>
+                    {accessTypes.map((accessType, index) => (
+                      <TableCell
+                        key={accessType}
+                        align="center"
+                        sx={tableCellBodyStyles(
+                          index,
+                          rowIndex,
+                          roles.length
+                        )}
+                      >
+                        <IconButton
+                          onClick={() => toggleAccess(role.key, accessType)}
+                          color={
+                            accessState[role.key][accessType]
+                              ? "success"
+                              : "error"
+                          }
+                        >
+                          {accessState[role.key][accessType] ? (
+                            <CheckCircleIcon sx={{ fontSize: "40px" }} />
+                          ) : (
+                            <CancelIcon sx={{ fontSize: "40px" }} />
+                          )}
+                        </IconButton>
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Stack spacing={2} sx={stackStyles}>
+            {roles.map((role) => (
+              <Paper key={role.key} elevation={3} sx={paperStyles}>
+                <Typography variant="body1" sx={typographyBody1Styles}>
+                  {role.label}
+                </Typography>
+                <Typography variant="body2">
+                  {role.key === "admin" &&
+                    "Admins have all (view, edit & delete) access for Wholesaler & Club."}
+                  {role.key === "wholesaler" &&
+                    "Wholesalers have view, edit & delete access for Club."}
+                  {role.key === "club" &&
+                    "Clubs have only view & edit access for Club data."}
+                </Typography>
+              </Paper>
+            ))}
+          </Stack>
+=======
   const [adminView, setAdminView] = React.useState("tick");
   const [adminEdit, setAdminEdit] = React.useState("tick");
   const [adminDelete, setAdminDelete] = React.useState("tick");
@@ -127,10 +236,11 @@ const AccessControlGrid = () => {
               </Typography>
             </Paper>
           </Box>
+>>>>>>> 05cc3b7be8005867d296d493b5bf752bf249da87
         </Grid>
       </Grid>
     </Box>
   );
 };
 
-export default AccessControlGrid;
+export default AccessControl;

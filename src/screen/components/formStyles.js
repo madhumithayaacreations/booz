@@ -1,5 +1,4 @@
-import { styled } from "@mui/material/styles";
-import { Container, Button, TextField } from "@mui/material";
+import { Button, TextField, Container, styled } from "@mui/material";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -91,7 +90,6 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
     },
   },
 }));
-
 export const styles = {
   title: {
     color: "#3E4954",
@@ -137,6 +135,10 @@ export const styles = {
     mb: 1,
     color: "#788088",
   },
+  submitGap: {
+    mt: 4,
+    mb: 3,
+  },
   submitButtonContainer: {
     mt: 4,
     mb: 3,
@@ -157,4 +159,55 @@ export const styles = {
     textAlign: "center",
     textTransform: "none",
   },
+};
+
+//Permission Styles
+export const containerStyles = {
+  padding: { xs: "20px", md: "30px" },
+};
+
+export const tableContainerStyles = {
+  borderRadius: "8px",
+  overflowX: "auto",
+  overflowY: "hidden",
+};
+
+export const tableStyles = {
+  borderCollapse: "separate",
+  borderSpacing: "0",
+  height: "100%",
+};
+
+export const tableCellHeaderStyles = {
+  fontWeight: "bold",
+  textAlign: "center",
+  border: "none",
+};
+
+export const tableCellBodyStyles = (index, rowIndex, rolesLength) => ({
+  borderRight: index === 2 ? "2px solid #cad1f5" : "none",
+  borderBottom: rowIndex === rolesLength - 1 ? "2px solid #cad1f5" : "none",
+  borderTop: rowIndex === 0 ? "2px solid #cad1f5" : "none",
+});
+
+export const tableRowLabelCellStyles = {
+  textAlign: "center",
+  border: "none",
+  borderRight: "2px solid #cad1f5",
+  fontWeight: "bold",
+};
+
+export const stackStyles = {
+  paddingTop: "50px",
+};
+
+export const paperStyles = {
+  padding: "8px",
+  backgroundColor: "#2f4cdd",
+  color: "#fff",
+  borderRadius: "16px",
+};
+
+export const typographyBody1Styles = {
+  fontWeight: "bold",
 };

@@ -1,5 +1,6 @@
 import { Typography, Grid, Box } from "@mui/material";
 import { StyledButton, StyledTextField } from "../components/style";
+import { styles } from "../components/formStyles";
 import "../../style/style.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +21,7 @@ const CompleteSalesReportsBarClub = () => {
   };
 
   return (
-    <Box padding={10}>
+    <Box padding={3}>
       <Typography variant="h4" fontWeight={700}>
         Complete Sales Report Wholesaler
       </Typography>
@@ -31,9 +32,9 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
-                Name
+                Date
               </Typography>
               <StyledTextField
                 label=""
@@ -48,7 +49,7 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
                 Bar/club Name
               </Typography>
@@ -68,7 +69,7 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={{ color: "#788088" }}
               >
                 Address
               </Typography>
@@ -85,13 +86,13 @@ const CompleteSalesReportsBarClub = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container spacing={2} pt={3}>
+        <Grid container spacing={2} pt={0}>
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
             <Box>
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
                 Total Transactions
               </Typography>
@@ -109,7 +110,7 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
                 Complete Bottles Sold
               </Typography>
@@ -127,7 +128,7 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
                 Shots Consumed
               </Typography>
@@ -145,7 +146,7 @@ const CompleteSalesReportsBarClub = () => {
               <Typography
                 variant="h6"
                 fontSize={16}
-                sx={{ mt: 1, mb: 1, color: "#788088" }}
+                sx={ styles.salesTextFieldContainer }
               >
                 Most Sold Brand
               </Typography>
@@ -159,12 +160,16 @@ const CompleteSalesReportsBarClub = () => {
                 error={!!errors.mostSoldBrand}
               />
             </Box>
-            <Box pt={3}>
-              <StyledButton sx={{ padding: "10px 30px" }} type="submit"
-              onClick={viewReport}>
-                VIEW REPORT
+            <Box sx={ styles.submitGap }>
+            <Grid item xs={3} p={0}>
+              <StyledButton
+                sx={styles.submitButtonContainer}
+                onClick={ viewReport }
+              >
+                View Report
               </StyledButton>
-            </Box>
+            </Grid>
+          </Box>
           </Grid>
           <Grid item xs={0} sm={0} md={0} lg={2} xl={2}></Grid>
           <Grid item xs={0} sm={0} md={0} lg={6} xl={6}></Grid>

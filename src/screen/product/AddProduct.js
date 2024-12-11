@@ -5,24 +5,18 @@ import {
   Button,
   Typography,
   Grid,
-  Snackbar,
-  Alert,
   Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
 } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
 import {
   StyledContainer,
   StyledButton,
   StyledTextField,
   styles,
-} from "./ProductStyles";
+} from "../components/formStyles";
+import CommonSnackbar from "../notification/Snackbar";
+import CommonDialog from "../notification/Dialogbox";
 
-const EditProduct = () => {
+const AddProduct = () => {
   const {
     register,
     handleSubmit,
@@ -34,9 +28,8 @@ const EditProduct = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
-  const [openDialog, setOpenDialog] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -51,21 +44,26 @@ const EditProduct = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const handleImage = () => {
     if (selectedFile) {
-      console.log("Saving product details with file:", selectedFile.name);
       showSnackbar(
         `Product details saved with file: ${selectedFile.name}`,
         "success"
       );
-      setIsSuccess(true); // Set to true for tick icon
-      setOpenDialog(true); // Show dialog after submission
     } else {
       showSnackbar("Please choose a file before saving.", "error");
-      setIsSuccess(false); // Set to false for X mark
-      setOpenDialog(true); // Show dialog after submission
     }
-  };
+  }
+  
+    const onSubmit = (data) => {
+      if (data) {
+        setIsSuccess(true);
+        setDialogOpen(true);
+      } else {
+        setIsSuccess(false);
+        setDialogOpen(true);
+      }
+    };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -78,7 +76,7 @@ const EditProduct = () => {
   };
 
   const handleDialogClose = () => {
-    setOpenDialog(false);
+    setDialogOpen(false);
   };
 
   return (
@@ -129,7 +127,7 @@ const EditProduct = () => {
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={handleImage}
                       size="small"
                     >
                       Save
@@ -142,7 +140,7 @@ const EditProduct = () => {
         </Grid>
         {/* content area */}
         <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-          <Box sx={{ mt: 1, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Brands"
               id="brand"
@@ -154,7 +152,7 @@ const EditProduct = () => {
               helperText={errors.brand ? errors.brand.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Bottle Name"
               id="bottleName"
@@ -168,7 +166,7 @@ const EditProduct = () => {
               helperText={errors.bottleName ? errors.bottleName.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Type of Quantity"
               id="typeOfQuantity"
@@ -179,10 +177,12 @@ const EditProduct = () => {
                 required: "Type of Quantity is required",
               })}
               error={!!errors.typeOfQuantity}
-              helperText={errors.typeOfQuantity ? errors.typeOfQuantity.message : ""}
+              helperText={
+                errors.typeOfQuantity ? errors.typeOfQuantity.message : ""
+              }
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="SKU"
               id="sku"
@@ -196,7 +196,7 @@ const EditProduct = () => {
               helperText={errors.sku ? errors.sku.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Price"
               id="price"
@@ -208,7 +208,7 @@ const EditProduct = () => {
               helperText={errors.price ? errors.price.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 3, mb: 1, color: "#788088" }}>
+          <Box sx={ styles.textFieldContainer }>
             <StyledTextField
               label="Quantity"
               id="quantity"
@@ -220,10 +220,10 @@ const EditProduct = () => {
               helperText={errors.quantity ? errors.quantity.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 4, mb: 3 }}>
+          <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
-                sx={ styles.submitButtonContainer }
+                sx={styles.submitButtonContainer}
                 onClick={handleSubmit(onSubmit)}
               >
                 Submit
@@ -234,46 +234,23 @@ const EditProduct = () => {
       </Grid>
 
       {/* Snackbar */}
-      <Snackbar
+      <CommonSnackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      />
 
-       {/* Pop-up Dialog */}
-       <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle>
-          {isSuccess ? (
-            <CheckCircleIcon sx={{ color: "green", marginRight: 1, }} />
-          ) : (
-            <CancelIcon sx={{ color: "red", marginRight: 1, }} />
-          )}
-          {isSuccess ? "Success" : "Error"}
-        </DialogTitle>
-        <DialogContent>
-          <Typography variant="body1">
-            {isSuccess
-              ? "Your product details have been saved successfully!"
-              : "There was an error saving the product details. Please try again."}
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+      {/* Dialog */}
+      <CommonDialog
+        open={dialogOpen}
+        isSuccess={isSuccess}
+        onClose={handleDialogClose}
+        messageSuccess="Product added successfully!"
+        messageError="Failed to add the product."
+      />
     </Container>
   );
 };
 
-export default EditProduct;
+export default AddProduct;

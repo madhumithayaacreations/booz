@@ -5,8 +5,6 @@ import {
   Button,
   Typography,
   Grid,
-  Snackbar,
-  Alert,
   Container,
 } from "@mui/material";
 import {
@@ -14,9 +12,11 @@ import {
   StyledButton,
   StyledTextField,
   styles,
-} from "./CustomerStyles";
+} from "../components/formStyles";
+import CommonSnackbar from "../notification/Snackbar";
+import CommonDialog from "../notification/Dialogbox";
 
-const EditProduct = () => {
+const EditCustomer = () => {
   const {
     register,
     handleSubmit,
@@ -28,6 +28,8 @@ const EditProduct = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -42,17 +44,26 @@ const EditProduct = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const handleImage = () => {
     if (selectedFile) {
-      console.log("Saving customer details with file:", selectedFile.name);
       showSnackbar(
-        `Customer details saved with file: ${selectedFile.name}`,
+        `Product details saved with file: ${selectedFile.name}`,
         "success"
       );
     } else {
       showSnackbar("Please choose a file before saving.", "error");
     }
-  };
+  }
+  
+    const onSubmit = (data) => {
+      if (data) {
+        setIsSuccess(true);
+        setDialogOpen(true);
+      } else {
+        setIsSuccess(false);
+        setDialogOpen(true);
+      }
+    };
 
   const showSnackbar = (message, severity) => {
     setSnackbarMessage(message);
@@ -62,6 +73,10 @@ const EditProduct = () => {
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -112,7 +127,7 @@ const EditProduct = () => {
                     <Button
                       variant="contained"
                       sx={styles.saveButton}
-                      onClick={handleSubmit(onSubmit)}
+                      onClick={handleSubmit(handleImage)}
                       size="small"
                     >
                       Save
@@ -130,12 +145,12 @@ const EditProduct = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={ styles.textFieldContainer }
             >
               Name 
             </Typography>
             <StyledTextField
-              label="XclusLv"
+              label="Name"
               id="name"
               size="large"
               fullWidth
@@ -149,12 +164,12 @@ const EditProduct = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={ styles.textFieldContainer }
             >
               Address 
             </Typography>
             <StyledTextField
-              label="6, Raffle, raffles link, singapore"
+              label="Address"
               id="address"
               rows={4}
               size="large"
@@ -169,12 +184,12 @@ const EditProduct = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={ styles.textFieldContainer }
             >
               Email Address
             </Typography>
             <StyledTextField
-              label=" afgh@gmail.com"
+              label="Email Address"
               id="email"
               size="large"
               fullWidth
@@ -194,12 +209,12 @@ const EditProduct = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={ styles.textFieldContainer }
             >
-              User Name
+              Username
             </Typography>
             <StyledTextField
-              label=" 9.235476"
+              label="Username"
               id="username"
               size="large"
               fullWidth
@@ -215,12 +230,12 @@ const EditProduct = () => {
             <Typography
               variant="h6"
               fontSize={16}
-              sx={{ mt: 1, mb: 1, color: "#788088" }}
+              sx={ styles.textFieldContainer }
             >
               Reset Password 
             </Typography>
             <StyledTextField
-              label="jndiobh"
+              label="Reset Password"
               id="password"
               type="password"
               size="large"
@@ -231,7 +246,7 @@ const EditProduct = () => {
               helperText={errors.password ? errors.password.message : ""}
             />
           </Box>
-          <Box sx={{ mt: 4, mb: 3 }}>
+          <Box sx={ styles.submitGap }>
             <Grid item xs={3}>
               <StyledButton
                 sx={styles.submitButtonContainer}
@@ -243,22 +258,24 @@ const EditProduct = () => {
           </Box>
         </Grid>
       </Grid>
-      <Snackbar
+      {/* Snackbar */}
+      <CommonSnackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      />
+
+      {/* Dialog */}
+      <CommonDialog
+        open={dialogOpen}
+        isSuccess={isSuccess}
+        onClose={handleDialogClose}
+        messageSuccess="Customer details updated successfully!"
+        messageError="Failed to update the customer details."
+      />
     </Container>
   );
 };
 
-export default EditProduct;
+export default EditCustomer;
