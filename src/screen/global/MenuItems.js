@@ -59,12 +59,12 @@ const menuItems = [
   {
     key: "products",
     icon: <PeopleOutlineOutlinedIcon />,
-    label: "Add Products To App",
+    label: "Add Product To App",
     submenu: [
       { name: "Add New", url: APP_LINK.ADDPRODUCT },
       { name: "Edit", url: APP_LINK.EDITPRODUCT },
       { name: "Products", url: APP_LINK.PRODUCTLIST },
-      { name: "Permission", url: APP_LINK.PERMISSION },
+      { name: "Permissions", url: APP_LINK.PERMISSION },
     ],
   },
   {

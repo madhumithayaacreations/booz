@@ -25,6 +25,7 @@ import {
   stackStyles,
   paperStyles,
   typographyBody1Styles,
+  iconStyle,
 } from "../components/formStyles";
 
 const AccessControl = () => {
@@ -61,7 +62,9 @@ const AccessControl = () => {
             <Table sx={tableStyles}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={tableCellHeaderStyles}></TableCell>
+                  <TableCell sx={tableCellHeaderStyles}>          
+                   {/* Access */}
+                  </TableCell>
                   {accessTypes.map((accessType) => (
                     <TableCell key={accessType} sx={tableCellHeaderStyles}>
                       {accessType.charAt(0).toUpperCase() + accessType.slice(1)}
@@ -94,9 +97,9 @@ const AccessControl = () => {
                           }
                         >
                           {accessState[role.key][accessType] ? (
-                            <CheckCircleIcon sx={{ fontSize: "40px" }} />
+                            <CheckCircleIcon sx={iconStyle} />
                           ) : (
-                            <CancelIcon sx={{ fontSize: "40px" }} />
+                            <CancelIcon sx={iconStyle} />
                           )}
                         </IconButton>
                       </TableCell>
@@ -107,6 +110,7 @@ const AccessControl = () => {
             </Table>
           </TableContainer>
         </Grid>
+        {/* content section */}
         <Grid item xs={12} md={4}>
           <Stack spacing={2} sx={stackStyles}>
             {roles.map((role) => (

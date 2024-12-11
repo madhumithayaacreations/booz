@@ -38,13 +38,12 @@ const sidebarStyles = (theme) => ({
     transition: "margin 0.3s ease",
   },
   menuContainerClosed: {
-    marginLeft: "20px",
+    marginLeft: "10px",
   },
   submenuBox: {
     marginLeft: "15px",
     paddingLeft: "10px",
     borderLeft: "1px solid #e0e0e0", 
-
   },
   scrollableMenu: {
     height: "calc(100vh - 64px)",

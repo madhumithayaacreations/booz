@@ -1,3 +1,27 @@
+/* sidebar for small one */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 250px; 
+  width: calc(100% - 250px); 
+  height: 100%;
+  background-color: #fffffff7;
+  z-index: 1100; 
+  display: none; 
+  transition: left 0.3s ease, width 0.3s ease; 
+}
+
+.sidebar-overlay.collapsed {
+  left: 80px; 
+  width: calc(100% - 80px);
+}
+
+@media (max-width: 560px) {
+  .sidebar-overlay {
+    display: block; 
+  }
+}
+
 /* scrollbar starts below the header */
 .scrollable-menu {
     height: calc(100vh - 70px); 

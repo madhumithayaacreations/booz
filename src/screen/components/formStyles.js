@@ -1,4 +1,10 @@
-import { Button, TextField, Container, styled } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Container,
+  styled,
+  getAppBarUtilityClass,
+} from "@mui/material";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -106,6 +112,7 @@ export const styles = {
     display: "flex",
     justifyContent: "space-around",
     padding: 2,
+    gap: 0.5,
     fontSize: "16px",
   },
   chooseFileButton: {
@@ -119,6 +126,16 @@ export const styles = {
     color: "#063af8ba",
     fontWeight: "bold",
     pointerEvents: selectedFile ? "none" : "auto",
+    border: "1px solid #ddd",
+    fontWeight: "bold",
+    maxWidth: "180px",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textAlign: "center",
+    padding: "4px 8px",
+    textOverflow: "clip",
+    display: "inline-block",
+    direction: "ltr",
   }),
   saveButtonContainer: {
     display: "flex",
@@ -185,20 +202,25 @@ export const tableCellHeaderStyles = {
 };
 
 export const tableCellBodyStyles = (index, rowIndex, rolesLength) => ({
-  borderRight: index === 2 ? "2px solid #cad1f5" : "none",
-  borderBottom: rowIndex === rolesLength - 1 ? "2px solid #cad1f5" : "none",
-  borderTop: rowIndex === 0 ? "2px solid #cad1f5" : "none",
+  borderRight: index === 2 ? "4px solid #cad1f5" : "none",
+  borderBottom: rowIndex === rolesLength - 1 ? "4px solid #cad1f5" : "none",
+  borderTop: rowIndex === 0 ? "4px solid #cad1f5" : "none",
 });
 
 export const tableRowLabelCellStyles = {
   textAlign: "center",
   border: "none",
-  borderRight: "2px solid #cad1f5",
+  borderRight: "4px solid #cad1f5",
   fontWeight: "bold",
+};
+
+export const iconStyle = {
+  fontSize: "40px",
 };
 
 export const stackStyles = {
   paddingTop: "50px",
+  margin: 1,
 };
 
 export const paperStyles = {
